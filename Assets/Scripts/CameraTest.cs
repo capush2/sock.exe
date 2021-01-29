@@ -99,8 +99,8 @@ public class CameraTest: MonoBehaviour
     private void HighlightView()
     {
         RaycastHit hitView;
-        Ray highlightRay = new Ray(transform.position, transform.position + transform.forward);
-        Debug.DrawRay(transform.position, transform.forward * 10);
+        Ray highlightRay = new Ray(cam.transform.position, cam.transform.forward);
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * 10);
 
         if (Physics.Raycast(highlightRay, out hitView, 10))
         {
@@ -110,13 +110,14 @@ public class CameraTest: MonoBehaviour
                 {
                     lastLooked = hitView.transform;
                     lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+                    Debug.Log("hitWeapon");
                 }
             }
-            else
+            else if(lastLooked!=null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 lastLooked = null;
-                Debug.Log("Not a Weapon");
+                Debug.Log("not a weapon");
             }
         }
         else
@@ -127,10 +128,8 @@ public class CameraTest: MonoBehaviour
             }
             
             lastLooked = null;
-            Debug.Log("Nothing");
+            Debug.Log("hit nothing");
         }
-
-
     }
 
     private void Equip()
