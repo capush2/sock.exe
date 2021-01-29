@@ -51,4 +51,9 @@ public class NailGun : MonoBehaviour, IWeaponTool
             o.enabled = !o.enabled;
         }
     }
+
+    public void UnEquip()
+    {
+        throw new System.NotImplementedException();
+    }
 }
