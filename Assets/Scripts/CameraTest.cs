@@ -23,6 +23,9 @@ public class CameraTest: MonoBehaviour
     private bool grounded = false;
     private float runMult = 1;
 
+    //TODO high jump on crouch?
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,8 +59,13 @@ public class CameraTest: MonoBehaviour
 
     private void Look()
     {
-        float newX = Mathf.Clamp(cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity, -89, 89);
+        float newX = cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity;
         float newY = cam.transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+        Debug.Log(newX + 90);
+        if((newX + 90)%360 < 0 || (newX + 90) % 360 > 180)
+        {
+            newX = cam.transform.eulerAngles.x;
+        }
         cam.transform.eulerAngles = new Vector3(newX, newY);
     }
 
