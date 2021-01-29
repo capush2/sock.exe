@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nailPrefab: {fileID: 3314739415045271378, guid: 1be90af9d44ddf04c8b93631221fa206,
     type: 3}
+  Texture2D: {fileID: 21300000, guid: 871ee817ee60df849babc704db82c258, type: 3}
   relativeNailStartCoords: {x: 0.29, y: 1, z: 1.04}
-  isEquiped: 0
+  isEquipped: 0
 --- !u!65 &7604558945330802238
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ public class NailGun : MonoBehaviour, IWeaponTool
     GameObject nailPrefab = null;
 
     [SerializeField]
+    Sprite Texture2D;
+
+    [SerializeField]
     Vector3 relativeNailStartCoords = new Vector3(0.29f, 1f, 1.04f);
 
     [SerializeField]
@@ -29,9 +32,22 @@ public class NailGun : MonoBehaviour, IWeaponTool
             o.enabled = false;
         }
     }
+    public Sprite Get2DSpriteTexture()
+    {
+        return Texture2D;
+    }
+
     public void Equip()
     {
         isEquipped = true;
+    }
+
+    public void ToggleFlash()
+    {
+        foreach (var o in childrenOutlines)
+        {
+            o.enabled = !o.enabled;
+        }
     }
 
     public void UnEquip()
@@ -46,14 +62,6 @@ public class NailGun : MonoBehaviour, IWeaponTool
             Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
             gameObject.SetActive(false);
             isEquipped = false;
-        }
-    }
-
-    public void ToggleFlash()
-    {
-        foreach(var o in childrenOutlines)
-        {
-            o.enabled = !o.enabled;
         }
     }
 }

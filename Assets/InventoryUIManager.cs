@@ -10,8 +10,9 @@ public class InventoryUIManager : MonoBehaviour
     }
     public GameObject[] inventoryDisplay = new GameObject[3];
     public Sprite[] inventorySprites = new Sprite[3];
-    public void AddToInventory()
+    public void AddToInventory(GameObject weaponTool)
     {
-
+        inventoryDisplay[0] = weaponTool;
+        //invetorweaponTool.GetComponent<IWeaponTool>().Get2DSpriteTexture();
     }
 }

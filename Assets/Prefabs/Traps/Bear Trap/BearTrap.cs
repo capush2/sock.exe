@@ -2,29 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BearTrap : MonoBehaviour
+public class BearTrap : MonoBehaviour, IWeaponTool
 {
-    private bool active = true;
+    [SerializeField]
+    Sprite Texture2D;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool opened = true;
+
+    public void Equip()
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public Sprite Get2DSpriteTexture()
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public void ToggleFlash()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void UnEquip()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Use(RaycastHit hit)
+    {
+        throw new System.NotImplementedException();
     }
 
     private IEnumerator OnTriggerEnter(Collider other)
     {
-        if (active)
+        if (opened)
         {
             transform.GetChild(3).eulerAngles += new Vector3(85, 0, 0);
             transform.GetChild(4).eulerAngles += new Vector3(85, 0, 0);
-            active = false;
+            opened = false;
             other.gameObject.GetComponent<BearTrapTest>().Stop();
             yield return new WaitForSecondsRealtime(5);
             other.gameObject.GetComponent<BearTrapTest>().BreakFree();
