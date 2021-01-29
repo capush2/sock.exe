@@ -44,6 +44,7 @@ public class CameraTest: MonoBehaviour
         Crouch();
     }
 
+
     private void Crouch()
     {
         if (Input.GetKey(KeyCode.LeftControl) && transform.localScale.y > 1)
