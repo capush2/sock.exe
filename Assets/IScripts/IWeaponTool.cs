@@ -6,6 +6,6 @@ public interface IWeaponTool
 {
     void Equip();
     void UnEquip();
-    void Use();
+    void Use(RaycastHit hit);
     void ToggleFlash();
 }
