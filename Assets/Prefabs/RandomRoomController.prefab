@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabArray:
-  - {fileID: 3619589877095576901, guid: e1d873986b30afa4c8139ce32b3665e4, type: 3}
-  - {fileID: 8392538446043696443, guid: 6f1ea4eb575c5b24482c8f42fc4b2568, type: 3}
+  - {fileID: 5637674962245319004, guid: 3149de4fc02898d4a86f159dfe881bd6, type: 3}
+  - {fileID: 8844693113629306498, guid: f4bdb20739dc11947b10f58bc593e3df, type: 3}
   walls:
   - {fileID: 3588630293212265769, guid: ba58142355b59dc4cbc1b71788e72d38, type: 3}
   - {fileID: 1521100414044435654, guid: 3e41b3d597c623d4db0df1dffe42c507, type: 3}

@@ -111,8 +111,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   mouseSensitivity: 5
-  rayHeight: 1.6
-  jumpForce: 25
+  rayHeight: 2
+  jumpForce: 50
   runBoost: 2
   crouchSpeed: 0.03
 --- !u!54 &4553439888619051788
