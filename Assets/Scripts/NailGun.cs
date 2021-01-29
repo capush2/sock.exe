@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NailGun : MonoBehaviour//, IWeaponTool
+public class NailGun : MonoBehaviour, IWeaponTool
 {
     [SerializeField]
     GameObject nailPrefab = null;
