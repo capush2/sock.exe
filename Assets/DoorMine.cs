@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DoorMine : MonoBehaviour, IWeaponTool
 {
+    [SerializeField]
+    Sprite Texture2D;
 
     [SerializeField]
     private bool isEquipped;
@@ -23,6 +25,11 @@ public class DoorMine : MonoBehaviour, IWeaponTool
         {
             o.enabled = false;
         }
+    }
+
+    public Sprite Get2DSpriteTexture()
+    {
+        return Texture2D;
     }
 
     public void Equip()
