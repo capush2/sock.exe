@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         firstPerson = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
