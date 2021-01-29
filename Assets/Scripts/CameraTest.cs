@@ -125,14 +125,12 @@ public class CameraTest: MonoBehaviour
                 {
                     lastLooked = hitView.transform;
                     lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
-                    Debug.Log("hitWeapon");
                 }
             }
             else if(lastLooked!=null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 lastLooked = null;
-                Debug.Log("not a weapon");
             }
         }
         else
@@ -143,7 +141,6 @@ public class CameraTest: MonoBehaviour
             }
             
             lastLooked = null;
-            Debug.Log("hit nothing");
         }
     }
 

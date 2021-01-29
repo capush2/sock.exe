@@ -6,6 +6,7 @@ TagManager:
   tags:
   - climbable
   - WeaponTool
+  - Door
   layers:
   - Default
   - TransparentFX
