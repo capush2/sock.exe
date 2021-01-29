@@ -33,7 +33,7 @@ public class CameraTest: MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 forward = cam.transform.forward;
         forward.y = 0;
@@ -47,12 +47,9 @@ public class CameraTest: MonoBehaviour
         Jump();
         Run();
         Crouch();
-    }
-
-    private void FixedUpdate()
-    {
         HighlightView();
     }
+
 
     private void Crouch()
     {
