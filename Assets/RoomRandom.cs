@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RoomRandom : MonoBehaviour
 {
     [SerializeField] private GameObject[] prefabArray;
     private GameObject current;
     [SerializeField] private GameObject[] walls;
+    [SerializeField] private GameObject[] a;
+    public NavMeshSurface surface;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class RoomRandom : MonoBehaviour
                 current.transform.parent = transform;
             }
         }
+
+        //UPDATE NAVMESH
+        
 
         for (int i = 0; i < 2; i++)
         {
@@ -42,6 +49,13 @@ public class RoomRandom : MonoBehaviour
                 current.transform.parent = transform;
             }
         }
+
+        surface.BuildNavMesh();
+        current = (GameObject) Instantiate(a[0], new Vector3(15, 1, 16), Quaternion.identity);
+        GameObject goal = new GameObject("goal");
+        goal.transform.Translate(new Vector3(-19, 1, -19));
+        current.GetComponent<NavAgentAI>().goal = goal.transform;
+
 
     }
 
