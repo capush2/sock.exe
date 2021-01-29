@@ -28,7 +28,7 @@ public class Ladder : MonoBehaviour
             playerOBJ = null;
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         if (canClimb)
         {
