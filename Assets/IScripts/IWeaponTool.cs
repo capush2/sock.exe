@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IWeaponTool
 {
-    //void 
+    void Equip();
+    void Use();
+    void ToggleFlash();
 }
