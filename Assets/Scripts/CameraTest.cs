@@ -12,7 +12,7 @@ public class CameraTest: MonoBehaviour
     [SerializeField] private float runBoost = 2f;
     [SerializeField] private float crouchSpeed = 0.03f;
 
-    private GameObject[] inventory = new GameObject[3];
+    private List<GameObject> inventory = new List<GameObject>(3);
     private Transform lastLooked = null;
 
 
@@ -44,6 +44,7 @@ public class CameraTest: MonoBehaviour
         Run();
         Crouch();
         HighlightView();
+        PickupWeaponTool();
     }
 
     private void Move()
@@ -144,8 +145,12 @@ public class CameraTest: MonoBehaviour
         }
     }
 
-    private void Equip()
+    private void PickupWeaponTool()
     {
-
+        if(lastLooked != null && Input.GetKeyDown(KeyCode.F))
+        {
+            lastLooked.gameObject.SetActive(false);
+            inventory.Add(lastLooked.gameObject);
+        }
     }
 }

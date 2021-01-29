@@ -22,14 +22,14 @@ namespace cakeslice
 
             if(pingPong)
             {
-                c.a += Time.deltaTime;
+                c.a += Time.deltaTime*1.5f;
 
                 if(c.a >= 0.9f)
                     pingPong = false;
             }
             else
             {
-                c.a -= Time.deltaTime;
+                c.a -= Time.deltaTime*1.5f;
 
                 if(c.a <= 0.1f)
                     pingPong = true;
