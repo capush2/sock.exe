@@ -25,9 +25,8 @@ public class RoomRandom : MonoBehaviour
                 current.transform.parent = transform;
             }
         }
-
-        //UPDATE NAVMESH
-        
+                
+        surface.BuildNavMesh();
 
         for (int i = 0; i < 2; i++)
         {
@@ -49,8 +48,7 @@ public class RoomRandom : MonoBehaviour
                 current.transform.parent = transform;
             }
         }
-
-        surface.BuildNavMesh();
+                
         current = (GameObject) Instantiate(a[0], new Vector3(15, 1, 16), Quaternion.identity);
         GameObject goal = new GameObject("goal");
         goal.transform.Translate(new Vector3(-19, 1, -19));
