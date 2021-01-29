@@ -12,9 +12,14 @@ public class CameraTest: MonoBehaviour
     [SerializeField] private float runBoost = 2f;
     [SerializeField] private float crouchSpeed = 0.03f;
 
+    private GameObject[] inventory = new GameObject[3];
+    private Transform lastLooked = null;
+
+
     private Rigidbody rb;
     private Camera cam;
 
+    
     private bool grounded = false;
     private float runMult = 1;
 
@@ -42,6 +47,11 @@ public class CameraTest: MonoBehaviour
         Jump();
         Run();
         Crouch();
+    }
+
+    private void FixedUpdate()
+    {
+        HighlightView();
     }
 
     private void Crouch()
@@ -84,5 +94,47 @@ public class CameraTest: MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    private void HighlightView()
+    {
+        RaycastHit hitView;
+        Ray highlightRay = new Ray(transform.position, transform.position + transform.forward);
+        Debug.DrawRay(transform.position, transform.forward * 10);
+
+        if (Physics.Raycast(highlightRay, out hitView, 10))
+        {
+            if(hitView.transform.tag == "WeaponTool")
+            {
+                if(lastLooked != hitView.transform)
+                {
+                    lastLooked = hitView.transform;
+                    lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+                }
+            }
+            else
+            {
+                lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+                lastLooked = null;
+                Debug.Log("Not a Weapon");
+            }
+        }
+        else
+        {
+            if(lastLooked != null)
+            {
+                lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+            }
+            
+            lastLooked = null;
+            Debug.Log("Nothing");
+        }
+
+
+    }
+
+    private void Equip()
+    {
+
     }
 }

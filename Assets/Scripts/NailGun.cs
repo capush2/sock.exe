@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using cakeslice;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,33 +9,46 @@ public class NailGun : MonoBehaviour, IWeaponTool
     GameObject nailPrefab = null;
 
     [SerializeField]
-    Vector3 relativeNailStartCoords = new Vector3(0.29f, -0.01f, 1.04f);
+    Vector3 relativeNailStartCoords = new Vector3(0.29f, 1f, 1.04f);
 
+    [SerializeField]
     private bool isEquiped;
+
+    private Outline[] childrenOutlines;
 
     void Awake()
     {
         isEquiped = false;
+        childrenOutlines = GetComponentsInChildren<Outline>();
     }
 
-    void FixedUpdate()
+    void Start()
     {
-        if(isEquiped && Input.GetMouseButtonDown(0))
+        foreach (var o in childrenOutlines)
         {
-            Debug.Log("HasClicked");
+            o.enabled = false;
+        }
+    }
+    public void Equip()
+    {
+        isEquiped = true;
+    }
+
+    public void Use()
+    {
+        if (isEquiped)
+        {
             Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
             gameObject.SetActive(false);
             isEquiped = false;
         }
     }
-    /*
-    public GameObject Equip()
-    {
 
+    public void ToggleFlash()
+    {
+        foreach(var o in childrenOutlines)
+        {
+            o.enabled = !o.enabled;
+        }
     }
-
-    public GameObject Use()
-    {
-
-    }*/
 }
