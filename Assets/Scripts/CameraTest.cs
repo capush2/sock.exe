@@ -35,21 +35,31 @@ public class CameraTest: MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 forward = cam.transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-        Vector3 right = Vector3.Cross(forward, Vector3.up);
-
-        transform.Translate(Input.GetAxis("Vertical") * forward * speed*Time.deltaTime * runMult);
-        transform.Translate(-Input.GetAxis("Horizontal") * right * speed * Time.deltaTime);
-        cam.transform.eulerAngles += new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * mouseSensitivity;
-
+        Move();
+        Look();
         Jump();
         Run();
         Crouch();
         HighlightView();
     }
 
+    private void Move()
+    {
+        Vector3 forward = cam.transform.forward;
+        forward.y = 0;
+        forward.Normalize();
+        Vector3 right = Vector3.Cross(forward, Vector3.up);
+
+        transform.Translate(Input.GetAxis("Vertical") * forward * speed * Time.deltaTime * runMult);
+        transform.Translate(-Input.GetAxis("Horizontal") * right * speed * Time.deltaTime);
+    }
+
+    private void Look()
+    {
+        float newX = Mathf.Clamp(cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity, -89, 89);
+        float newY = cam.transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+        cam.transform.eulerAngles = new Vector3(newX, newY);
+    }
 
     private void Crouch()
     {
