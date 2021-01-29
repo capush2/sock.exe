@@ -12,13 +12,13 @@ public class NailGun : MonoBehaviour, IWeaponTool
     Vector3 relativeNailStartCoords = new Vector3(0.29f, 1f, 1.04f);
 
     [SerializeField]
-    private bool isEquiped;
+    private bool isEquipped;
 
     private Outline[] childrenOutlines;
 
     void Awake()
     {
-        isEquiped = false;
+        isEquipped = false;
         childrenOutlines = GetComponentsInChildren<Outline>();
     }
 
@@ -31,21 +31,21 @@ public class NailGun : MonoBehaviour, IWeaponTool
     }
     public void Equip()
     {
-        isEquiped = true;
+        isEquipped = true;
     }
 
     public void UnEquip()
     {
-        isEquiped = false;
+        isEquipped = false;
     }
 
-    public void Use()
+    public void Use(RaycastHit hit)
     {
-        if (isEquiped)
+        if (isEquipped)
         {
             Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
             gameObject.SetActive(false);
-            isEquiped = false;
+            isEquipped = false;
         }
     }
 
