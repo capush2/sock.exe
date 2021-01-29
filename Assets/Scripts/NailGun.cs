@@ -34,6 +34,11 @@ public class NailGun : MonoBehaviour, IWeaponTool
         isEquiped = true;
     }
 
+    public void UnEquip()
+    {
+        isEquiped = false;
+    }
+
     public void Use()
     {
         if (isEquiped)
