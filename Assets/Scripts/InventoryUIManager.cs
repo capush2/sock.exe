@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryUIManager : MonoBehaviour
@@ -44,12 +42,14 @@ public class InventoryUIManager : MonoBehaviour
     {
         if(equipped == inventoryDisplay[num])
         {
+            inventoryDisplay[num].GetComponent<IWeaponTool>().UnEquip();
             equipped = null;
             numEquipped = -1;
             Debug.Log($"Has UNEquipped {num}");
         }
         else
         {
+            inventoryDisplay[num].GetComponent<IWeaponTool>().Equip();
             equipped = inventoryDisplay[num];
             numEquipped = num;
             Debug.Log($"Has Equipped {num}");

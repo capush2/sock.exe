@@ -13,8 +13,21 @@ public class NailGun : WeaponTool
 
     public override bool Use(RaycastHit hit)
     {
-        Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
-        gameObject.SetActive(false);
-        return true;
+        if (equipped)
+        {
+            Instantiate(nailPrefab, gameObject.transform.position + relativeNailStartCoords, Quaternion.identity);
+            gameObject.SetActive(false);
+            return true;
+        }
+        return false;
+    }
+
+    public override void Equip()
+    {
+        GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
+        gameObject.transform.position = rightHand.transform.position;
+        gameObject.transform.parent = rightHand.transform;
+        gameObject.transform.LookAt(transform.parent.forward);
+        base.Equip();
     }
 }
