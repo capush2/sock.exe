@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e85347de72de6248a1e96a4c4e5bbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Texture2D: {fileID: 21300000, guid: ba03ddd61207e7141b9597925c6d920c, type: 3}
+  Texture2D: {fileID: 21300000, guid: 92993a97ebb99bb47ae1101c88d24412, type: 3}
   isEquipped: 0
 --- !u!1 &7387667840482150010
 GameObject:

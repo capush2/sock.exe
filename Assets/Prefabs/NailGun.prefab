@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178b13d13f340f64a8528ee836082360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Texture2D: {fileID: 21300000, guid: 984aad84a72c87241b2aad0dd2e3e7ec, type: 3}
+  isEquipped: 0
   nailPrefab: {fileID: 3314739415045271378, guid: 1be90af9d44ddf04c8b93631221fa206,
     type: 3}
-  Texture2D: {fileID: 21300000, guid: 871ee817ee60df849babc704db82c258, type: 3}
   relativeNailStartCoords: {x: 0.29, y: 1, z: 1.04}
-  isEquipped: 0
 --- !u!65 &7604558945330802238
 BoxCollider:
   m_ObjectHideFlags: 0
