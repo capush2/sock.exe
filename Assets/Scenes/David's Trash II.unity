@@ -260,7 +260,6 @@ GameObject:
   m_Component:
   - component: {fileID: 370061269}
   - component: {fileID: 370061268}
-  - component: {fileID: 370061270}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -285,7 +284,7 @@ MonoBehaviour:
   walls:
   - {fileID: 3588630293212265769, guid: ba58142355b59dc4cbc1b71788e72d38, type: 3}
   - {fileID: 1521100414044435654, guid: 3e41b3d597c623d4db0df1dffe42c507, type: 3}
-  agent: {fileID: 0}
+  agent: {fileID: 4316848083944706710, guid: 4f1d4de675659784eb500b585f4516a3, type: 3}
   surface: {fileID: 263272406}
 --- !u!4 &370061269
 Transform:
@@ -301,18 +300,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &370061270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370061267}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1afc16d0afa993c4e8b300aeba06c93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &734475626
 PrefabInstance:
   m_ObjectHideFlags: 0
