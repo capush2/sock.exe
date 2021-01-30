@@ -523,7 +523,7 @@ PrefabInstance:
         type: 3}
       propertyPath: prefabArray.Array.data[2]
       value: 
-      objectReference: {fileID: 8389383393643930309, guid: 351190814e2820b4fa4f47a147719b40,
+      objectReference: {fileID: 4069140236269589989, guid: 20c45f506bd910b4c8b764a39360f658,
         type: 3}
     - target: {fileID: 5294657071734081957, guid: ae2fe355b3f7b1446937c3d7590384a9,
         type: 3}
