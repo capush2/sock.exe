@@ -52,4 +52,11 @@ public class DoorMine : WeaponTool
             Destroy(exp, 10);
         }
     }
+    public override void Equip()
+    {
+        GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
+        gameObject.transform.position = rightHand.transform.position;
+        gameObject.transform.parent = rightHand.transform;
+        base.Equip();
+    }
 }

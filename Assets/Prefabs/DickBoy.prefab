@@ -112,7 +112,7 @@ MonoBehaviour:
   speed: 5
   mouseSensitivity: 5
   rayHeight: 3
-  jumpForce: 50
+  jumpForce: 353.8
   runBoost: 2
   crouchSpeed: 0.03
   inventory: {fileID: 0}
