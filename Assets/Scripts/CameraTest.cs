@@ -36,6 +36,13 @@ public class CameraTest: MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        Equip();
+        PickupWeaponTool();
+        UseEquippedWTool();
+        HighlightView();
+    }
     void FixedUpdate()
     {
         Move();
@@ -43,8 +50,6 @@ public class CameraTest: MonoBehaviour
         Jump();
         Run();
         Crouch();
-        HighlightView();
-        PickupWeaponTool();
     }
 
     private void Move()
@@ -151,5 +156,31 @@ public class CameraTest: MonoBehaviour
             lastLooked.gameObject.SetActive(false);
             inventory.AddToInventory(lastLooked.gameObject);
         }
+    }
+
+    private void UseEquippedWTool()
+    {
+        if (Input.GetMouseButtonDown(0) && inventory.hasEquipped)
+        {
+            RaycastHit hitTool;
+            Ray highlightRay = new Ray(cam.transform.position, cam.transform.forward);
+            Debug.DrawRay(cam.transform.position, cam.transform.forward * 10);
+            Physics.Raycast(highlightRay, out hitTool, 10);
+            if (inventory.GetEquipped().GetComponent<IWeaponTool>().Use(hitTool))
+            {
+                inventory.DelEquipped();
+            }
+            Debug.Log($"Uses equipped {inventory.GetEquipped()?.name}");
+        }
+        
+    }
+    private void Equip()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            inventory.ToggleEquipped(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            inventory.ToggleEquipped(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            inventory.ToggleEquipped(2);
     }
 }

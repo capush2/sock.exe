@@ -8,14 +8,10 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
     [SerializeField]
     protected Sprite Texture2D;
 
-    [SerializeField]
-    protected bool isEquipped;
-
     protected Outline[] childrenOutlines;
 
     void Awake()
     {
-        isEquipped = false;
         childrenOutlines = GetComponentsInChildren<Outline>();
     }
 
@@ -32,11 +28,6 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
         return Texture2D;
     }
 
-    public virtual void Equip()
-    {
-        isEquipped = true;
-    }
-
     public virtual void ToggleFlash()
     {
         foreach (var o in childrenOutlines)
@@ -45,10 +36,5 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
         }
     }
 
-    public virtual void UnEquip()
-    {
-        isEquipped = false;
-    }
-
-    abstract public void Use(RaycastHit hit);
+    abstract public bool Use(RaycastHit hit);
 }

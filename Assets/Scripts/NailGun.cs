@@ -11,13 +11,10 @@ public class NailGun : WeaponTool
     [SerializeField]
     Vector3 relativeNailStartCoords = new Vector3(0.29f, 1f, 1.04f);
 
-    public override void Use(RaycastHit hit)
+    public override bool Use(RaycastHit hit)
     {
-        if (isEquipped)
-        {
-            Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
-            gameObject.SetActive(false);
-            isEquipped = false;
-        }
+        Instantiate(nailPrefab, relativeNailStartCoords, Quaternion.identity, transform);
+        gameObject.SetActive(false);
+        return true;
     }
 }

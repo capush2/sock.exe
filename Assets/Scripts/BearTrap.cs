@@ -6,7 +6,7 @@ public class BearTrap : WeaponTool
 {
     private bool opened = true;
 
-    public override void Use(RaycastHit hit)
+    public override bool Use(RaycastHit hit)
     {
         throw new System.NotImplementedException();
     }

@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class DoorMine : WeaponTool
 {
-    public override void Use(RaycastHit hit)
+    public override bool Use(RaycastHit hit)
     {
-        if (isEquipped && hit.transform.tag == "Door")
+        if (hit.transform != null && hit.transform.tag == "Door")
         {
-            this.transform.parent = hit.transform;
+            transform.parent = hit.transform;
+            gameObject.SetActive(true);
+            return true;
         }
+        return false;
     }
 
 }
