@@ -280,6 +280,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5783152889928569162, guid: ae2fe355b3f7b1446937c3d7590384a9,
+        type: 3}
+      propertyPath: m_DefaultArea
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783152889928569162, guid: ae2fe355b3f7b1446937c3d7590384a9,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 15fbdcc1c5b316f48a00394abaca8a5e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae2fe355b3f7b1446937c3d7590384a9, type: 3}
 --- !u!1 &2087717369
@@ -369,7 +380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087717369}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 120, y: 1, z: 120}
   m_Children: []
   m_Father: {fileID: 0}
@@ -402,6 +413,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746717, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c9a847156bf75d2439329773d4d96d43,
+        type: 2}
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
       propertyPath: m_RootOrder
@@ -415,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
@@ -514,7 +531,7 @@ PrefabInstance:
     - target: {fileID: 3991376465288547705, guid: ab23bc2f3d803d84fb7f7e0812acdb88,
         type: 3}
       propertyPath: m_BreakForce
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3991376465288547705, guid: ab23bc2f3d803d84fb7f7e0812acdb88,
         type: 3}

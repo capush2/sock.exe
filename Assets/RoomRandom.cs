@@ -28,6 +28,7 @@ public class RoomRandom : MonoBehaviour
                 
         surface.BuildNavMesh();
 
+
         for (int i = 0; i < 2; i++)
         {
             for (int k = 0; k < 3; k++)

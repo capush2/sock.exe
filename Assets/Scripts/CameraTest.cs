@@ -62,7 +62,6 @@ public class CameraTest: MonoBehaviour
     {
         float newX = cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity;
         float newY = cam.transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-        Debug.Log(newX + 90);
         if((newX + 90)%360 < 0 || (newX + 90) % 360 > 180)
         {
             newX = cam.transform.eulerAngles.x;
