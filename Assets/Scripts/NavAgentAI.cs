@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavAgentAI : MonoBehaviour
+public class NavAgentAI : LivingThing
 {
     const float BASE_HEIGHT = 4f, MIN_X = -30f, MAX_X = 30f, MIN_Z = -30f, MAX_Z = 30f;
     [SerializeField]
@@ -120,4 +120,27 @@ public class NavAgentAI : MonoBehaviour
         }
          
     }
+
+    #region LivingThing
+
+    override public void OnBearTrapHit()
+    {
+        base.OnBearTrapHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnMineHit()
+    {
+        base.OnMineHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnNailHit()
+    {
+        base.OnNailHit();
+        throw new System.NotImplementedException();
+    }
+
+    #endregion
+
 }

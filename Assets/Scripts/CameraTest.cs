@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTest : MonoBehaviour
+public class CameraTest : LivingThing
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private float mouseSensitivity = 5;
@@ -39,7 +39,7 @@ public class CameraTest : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (manager.CanPlayerMoveFree)
+        if (true)
         {
             Equip();
             PickupWeaponTool();
@@ -50,7 +50,7 @@ public class CameraTest : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (manager.CanPlayerMoveFree)
+        if (true)
         {
             Move();
             Look();
@@ -193,4 +193,20 @@ public class CameraTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             inventory.ToggleEquipped(2);
     }
+
+    #region LivingThing
+
+    override public void OnBearTrapHit()
+    {
+        base.OnBearTrapHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnMineHit()
+    {
+        base.OnMineHit();
+        throw new System.NotImplementedException();
+    }
+
+    #endregion
 }
