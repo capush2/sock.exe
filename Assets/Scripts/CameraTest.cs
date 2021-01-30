@@ -38,11 +38,21 @@ public class CameraTest: MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        DebugEscape();
         Equip();
         PickupWeaponTool();
         UseEquippedWTool();
         HighlightView();
     }
+
+    private void DebugEscape()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
     void FixedUpdate()
     {
         Move();
@@ -54,34 +64,36 @@ public class CameraTest: MonoBehaviour
 
     private void Move()
     {
-        Vector3 forward = cam.transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-        Vector3 right = Vector3.Cross(forward, Vector3.up);
-
-        transform.Translate(Input.GetAxis("Vertical") * forward * speed * Time.deltaTime * runMult);
-        transform.Translate(-Input.GetAxis("Horizontal") * right * speed * Time.deltaTime);
+        transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * speed * Time.deltaTime * runMult,Space.Self);
+        transform.Translate(Input.GetAxis("Horizontal") * Vector3.right * speed * Time.deltaTime, Space.Self);
     }
 
     private void Look()
     {
         float newX = cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity;
-        float newY = cam.transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+        float newY = transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
         if((newX + 90)%360 < 0 || (newX + 90) % 360 > 180)
         {
             newX = cam.transform.eulerAngles.x;
         }
-        cam.transform.eulerAngles = new Vector3(newX, newY);
+        cam.transform.eulerAngles = new Vector3(newX, cam.transform.eulerAngles.y);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, newY);
     }
 
     private void Crouch()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && transform.localScale.y > 1)
+        CapsuleCollider col = GetComponent<CapsuleCollider>();
+        Transform body = transform.Find("Body").transform;
+
+        if (Input.GetKey(KeyCode.LeftControl) && body.localScale.y > 1)
         {
-            transform.localScale -= new Vector3(0, crouchSpeed, 0);
-        }else if(!Input.GetKey(KeyCode.LeftControl) && transform.localScale.y < 1.5f)
+            body.localScale -= new Vector3(0, crouchSpeed, 0);
+            col.height -= 2 * crouchSpeed;
+        }
+        else if(!Input.GetKey(KeyCode.LeftControl) && body.localScale.y < 1.5f)
         {
-            transform.localScale += new Vector3(0, crouchSpeed, 0);
+            body.localScale += new Vector3(0, crouchSpeed, 0);
+            col.height += 2 * crouchSpeed;
         }
     }
 

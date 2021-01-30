@@ -26,6 +26,7 @@ public class NailVelocity : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<Rigidbody>().isKinematic = true;
+        if(collision.gameObject.tag != "Player")
+            GetComponent<Rigidbody>().isKinematic = true;
     }
 }
