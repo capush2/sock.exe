@@ -12,7 +12,7 @@ public class CameraTest: MonoBehaviour
     [SerializeField] private float runBoost = 2f;
     [SerializeField] private float crouchSpeed = 0.03f;
 
-    private List<GameObject> inventory = new List<GameObject>(3);
+    [SerializeField] private InventoryUIManager inventory;
     private Transform lastLooked = null;
 
 
@@ -150,7 +150,7 @@ public class CameraTest: MonoBehaviour
         if(lastLooked != null && Input.GetKeyDown(KeyCode.F))
         {
             lastLooked.gameObject.SetActive(false);
-            inventory.Add(lastLooked.gameObject);
+            inventory.AddToInventory(lastLooked.gameObject);
         }
     }
 }
