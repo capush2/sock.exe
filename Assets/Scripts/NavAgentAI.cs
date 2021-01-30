@@ -8,6 +8,9 @@ public class NavAgentAI : MonoBehaviour
     const float BASE_HEIGHT = 4f, MIN_X = -30f, MAX_X = 30f, MIN_Z = -30f, MAX_Z = 30f;
     [SerializeField]
     public Transform[] goals;
+    [SerializeField] public float speed = 8f;
+    [SerializeField] public float runSpeed = 16f;
+    [SerializeField] public float radius = 10f;
     private int currentPoint;
     NavMeshAgent agent;
     private Transform player;
@@ -31,6 +34,7 @@ public class NavAgentAI : MonoBehaviour
         if((player.position.x > agent.transform.position.x - agent.radius &&  player.position.x < agent.transform.position.x + agent.radius) && (player.position.y > agent.transform.position.y - agent.radius && player.position.y < agent.transform.position.y + agent.radius) && (player.position.z > agent.transform.position.z - agent.radius && player.position.z < agent.transform.position.z + agent.radius)) 
         {
             print("Oh no don't get me daddy!");
+            run();
         }
 
     }
@@ -47,7 +51,13 @@ public class NavAgentAI : MonoBehaviour
         }
         currentPoint = 0;
         agent.destination = goals[currentPoint].position;
+        agent.speed = speed;
+        agent.radius = radius;
         player = GameObject.FindWithTag("Player").transform;
-        
+    }
+
+    void run()
+    {
+        agent.speed = runSpeed;
     }
 }
