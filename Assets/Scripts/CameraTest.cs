@@ -30,8 +30,6 @@ public class CameraTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
     }
