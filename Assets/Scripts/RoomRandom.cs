@@ -8,8 +8,10 @@ public class RoomRandom : MonoBehaviour
     [SerializeField] private GameObject[] prefabArray;
     private GameObject current;
     [SerializeField] private GameObject[] walls;
-    [SerializeField] private GameObject[] a;
+    [SerializeField] private GameObject agent;
     public NavMeshSurface surface;
+
+    private NavMeshAgent agents;
     
 
     // Start is called before the first frame update
@@ -29,11 +31,11 @@ public class RoomRandom : MonoBehaviour
         surface.BuildNavMesh();
 
         SpawnWalls();
-                
-        current = (GameObject) Instantiate(a[0], new Vector3(15, 1, 16), Quaternion.identity);
-        GameObject goal = new GameObject("goal");
-        goal.transform.Translate(new Vector3(-19, 1, -19));
-        current.GetComponent<NavAgentAI>().goal = goal.transform;
+
+        current = Instantiate(agent);
+        agents = current.GetComponent<NavMeshAgent>();
+        agents.transform.position = new Vector3(15, 1, 16);
+        current.GetComponent<NavAgentAI>().GenGoals(ref agents);
 
 
     }
