@@ -1943,7 +1943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Texture2D: {fileID: 21300000, guid: 92993a97ebb99bb47ae1101c88d24412, type: 3}
-  isEquipped: 0
+  explosion: {fileID: 2961601332565239166, guid: d2477620090e4ca4eba3bd1442980061,
+    type: 3}
 --- !u!1 &7387667840482150010
 GameObject:
   m_ObjectHideFlags: 0

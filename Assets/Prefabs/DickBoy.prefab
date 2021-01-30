@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 878984205788746717}
   - component: {fileID: 878984205788746714}
   - component: {fileID: 4553439888619051788}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DickBoy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878984205788746715}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c9a847156bf75d2439329773d4d96d43, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -111,10 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   mouseSensitivity: 5
-  rayHeight: 2
+  rayHeight: 3
   jumpForce: 50
   runBoost: 2
   crouchSpeed: 0.03
+  inventory: {fileID: 0}
 --- !u!54 &4553439888619051788
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ GameObject:
   - component: {fileID: 7141801108445110751}
   - component: {fileID: 7388144918082552975}
   - component: {fileID: 3750281603514243662}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
