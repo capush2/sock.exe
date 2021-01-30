@@ -10,11 +10,12 @@ public class NavAgentAI : MonoBehaviour
     public Transform[] goals;
     private int currentPoint;
     NavMeshAgent agent;
+    private Transform player;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        GenGoals(ref agent);
+        GenGoals(ref agent);        
     }
 
     // Update is called once per frame
@@ -26,21 +27,27 @@ public class NavAgentAI : MonoBehaviour
             currentPoint %= goals.Length;
             agent.destination = goals[currentPoint].position;
         }
+        
+        if((player.position.x > agent.transform.position.x - agent.radius &&  player.position.x < agent.transform.position.x + agent.radius) && (player.position.y > agent.transform.position.y - agent.radius && player.position.y < agent.transform.position.y + agent.radius) && (player.position.z > agent.transform.position.z - agent.radius && player.position.z < agent.transform.position.z + agent.radius)) 
+        {
+            print("Oh no don't get me daddy!");
+        }
+
     }
 
     public void GenGoals(ref NavMeshAgent agent)
     {
         int nbPoint = Random.Range(2, 10);
         goals = new Transform[nbPoint];
-        print(nbPoint);
         for (int i = 0; i < nbPoint; i++)
         {
             GameObject goal = new GameObject("goal");
             goal.transform.Translate(new Vector3(Random.Range(MIN_X, MAX_X), 1, Random.Range(MIN_Z, MAX_Z)));
             goals[i] =  goal.transform;
         }
-        print(goals.Length);
         currentPoint = 0;
         agent.destination = goals[currentPoint].position;
+        player = GameObject.FindWithTag("Player").transform;
+        
     }
 }
