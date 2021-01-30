@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTest: MonoBehaviour
+public class CameraTest : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private float mouseSensitivity = 5;
@@ -13,13 +13,14 @@ public class CameraTest: MonoBehaviour
     [SerializeField] private float crouchSpeed = 0.03f;
 
     [SerializeField] private InventoryUIManager inventory;
+    [SerializeField] private GameManager manager;
     private Transform lastLooked = null;
 
 
     private Rigidbody rb;
     private Camera cam;
 
-    
+
     private bool grounded = false;
     private float runMult = 1;
 
@@ -38,11 +39,14 @@ public class CameraTest: MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        DebugEscape();
-        Equip();
-        PickupWeaponTool();
-        UseEquippedWTool();
-        HighlightView();
+        if (manager.CanPlayerMoveFree)
+        {
+            DebugEscape();
+            Equip();
+            PickupWeaponTool();
+            UseEquippedWTool();
+            HighlightView();
+        }
     }
 
     private void DebugEscape()
@@ -55,16 +59,19 @@ public class CameraTest: MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
-        Look();
-        Jump();
-        Run();
-        Crouch();
+        if (manager.CanPlayerMoveFree)
+        {
+            Move();
+            Look();
+            Jump();
+            Run();
+            Crouch();
+        }
     }
 
     private void Move()
     {
-        transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * speed * Time.deltaTime * runMult,Space.Self);
+        transform.Translate(Input.GetAxis("Vertical") * Vector3.forward * speed * Time.deltaTime * runMult, Space.Self);
         transform.Translate(Input.GetAxis("Horizontal") * Vector3.right * speed * Time.deltaTime, Space.Self);
     }
 
@@ -72,7 +79,7 @@ public class CameraTest: MonoBehaviour
     {
         float newX = cam.transform.eulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity;
         float newY = transform.eulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-        if((newX + 90)%360 < 0 || (newX + 90) % 360 > 180)
+        if ((newX + 90) % 360 < 0 || (newX + 90) % 360 > 180)
         {
             newX = cam.transform.eulerAngles.x;
         }
@@ -90,7 +97,7 @@ public class CameraTest: MonoBehaviour
             body.localScale -= new Vector3(0, crouchSpeed, 0);
             col.height -= 2 * crouchSpeed;
         }
-        else if(!Input.GetKey(KeyCode.LeftControl) && body.localScale.y < 1.5f)
+        else if (!Input.GetKey(KeyCode.LeftControl) && body.localScale.y < 1.5f)
         {
             body.localScale += new Vector3(0, crouchSpeed, 0);
             col.height += 2 * crouchSpeed;
@@ -136,15 +143,15 @@ public class CameraTest: MonoBehaviour
 
         if (Physics.Raycast(highlightRay, out hitView, 10))
         {
-            if(hitView.transform.tag == "WeaponTool")
+            if (hitView.transform.tag == "WeaponTool")
             {
-                if(lastLooked != hitView.transform)
+                if (lastLooked != hitView.transform)
                 {
                     lastLooked = hitView.transform;
                     lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 }
             }
-            else if(lastLooked!=null)
+            else if (lastLooked != null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 lastLooked = null;
@@ -152,18 +159,18 @@ public class CameraTest: MonoBehaviour
         }
         else
         {
-            if(lastLooked != null)
+            if (lastLooked != null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
             }
-            
+
             lastLooked = null;
         }
     }
 
     private void PickupWeaponTool()
     {
-        if(lastLooked != null && Input.GetKeyDown(KeyCode.F))
+        if (lastLooked != null && Input.GetKeyDown(KeyCode.F))
         {
             lastLooked.gameObject.SetActive(false);
             inventory.AddToInventory(lastLooked.gameObject);
@@ -184,7 +191,7 @@ public class CameraTest: MonoBehaviour
             }
             Debug.Log($"Uses equipped {inventory.GetEquipped()?.name}");
         }
-        
+
     }
     private void Equip()
     {
