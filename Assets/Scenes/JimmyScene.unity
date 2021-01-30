@@ -621,6 +621,7 @@ MonoBehaviour:
   jumpForce: 25
   runBoost: 2
   crouchSpeed: 0.03
+  inventory: {fileID: 0}
 --- !u!33 &878984206169759116
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -856,7 +857,7 @@ PrefabInstance:
     - target: {fileID: 5169628938125143647, guid: 960e90203368cc64f85087d0215702ac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.75
+      value: -6.82
       objectReference: {fileID: 0}
     - target: {fileID: 5169628938125143647, guid: 960e90203368cc64f85087d0215702ac,
         type: 3}
@@ -866,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 5169628938125143647, guid: 960e90203368cc64f85087d0215702ac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.72
+      value: 11.46
       objectReference: {fileID: 0}
     - target: {fileID: 5169628938125143647, guid: 960e90203368cc64f85087d0215702ac,
         type: 3}
