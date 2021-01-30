@@ -41,19 +41,10 @@ public class CameraTest : MonoBehaviour
     {
         if (manager.CanPlayerMoveFree)
         {
-            DebugEscape();
             Equip();
             PickupWeaponTool();
             UseEquippedWTool();
             HighlightView();
-        }
-    }
-
-    private void DebugEscape()
-    {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            Cursor.lockState = CursorLockMode.None;
         }
     }
 
