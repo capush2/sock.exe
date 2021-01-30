@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="297mm" height="210mm" fill-rule="evenodd" stroke-linejoin="round" stroke-width="28.222" baseProfile="tiny" preserveAspectRatio="xMidYMid" version="1.2" viewBox="0 0 29700 21000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+  <rect width="29700" height="21000" fill="none"/>
+   <path d="m2313 700c-357 0-713 356-713 713v17774c0 357 356 714 713 714h25274c356 0 713-357 713-714v-17774c0-357-357-713-713-713h-25274z"/>
+   <path d="m2313 700c-357 0-713 356-713 713v17774c0 357 356 714 713 714h25274c356 0 713-357 713-714v-17774c0-357-357-713-713-713h-25274z" fill="none" stroke="#000" stroke-linejoin="round"/>
+   <rect x="1600" y="700" width="26701" height="19201" fill="none"/>
+   <path d="m14249 18750c-115 0-229 114-229 229v292c0 115 114 230 229 230h1421c115 0 230-115 230-230v-292c0-115-115-229-230-229h-1421z"/>
+   <path d="m14249 18750c-115 0-229 114-229 229v292c0 115 114 230 229 230h1421c115 0 230-115 230-230v-292c0-115-115-229-230-229h-1421z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-width="100"/>
+   <rect x="14020" y="18750" width="1881" height="751" fill="none"/>
+   <path d="m15000 18100h-12300v-15500h24600v15500h-12300z" fill="#fff"/>
+   <path d="m15000 18100h-12300v-15500h24600v15500h-12300z" fill="none" stroke="#000" stroke-linejoin="round"/>
+   <path d="m15050 1820c-29 0-54-7-80-21-26-15-44-33-59-59-14-26-21-51-21-80s7-54 21-80c15-26 33-44 59-59 26-14 51-21 80-21s54 7 80 21c26 15 44 33 59 59 14 26 21 51 21 80s-7 54-21 80c-15 26-33 44-59 59-26 14-51 21-80 21z" fill="#fff"/>
+   <path d="m15050 1820c-29 0-54-7-80-21-26-15-44-33-59-59-14-26-21-51-21-80s7-54 21-80c15-26 33-44 59-59 26-14 51-21 80-21s54 7 80 21c26 15 44 33 59 59 14 26 21 51 21 80s-7 54-21 80c-15 26-33 44-59 59-26 14-51 21-80 21z" fill="none" stroke="#000" stroke-linejoin="round"/>
+</svg>
