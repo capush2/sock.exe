@@ -166,8 +166,11 @@ public class CameraTest: MonoBehaviour
             Ray highlightRay = new Ray(cam.transform.position, cam.transform.forward);
             Debug.DrawRay(cam.transform.position, cam.transform.forward * 10);
             Physics.Raycast(highlightRay, out hitTool, 10);
-            inventory.GetEquipped().GetComponent<IWeaponTool>().Use(hitTool);
-            Debug.Log($"Uses equipped {inventory.GetEquipped().name}");
+            if (inventory.GetEquipped().GetComponent<IWeaponTool>().Use(hitTool))
+            {
+                inventory.DelEquipped();
+            }
+            Debug.Log($"Uses equipped {inventory.GetEquipped()?.name}");
         }
         
     }
