@@ -11,6 +11,7 @@ public class RoomRandom : MonoBehaviour
     [SerializeField] private GameObject agent;
     public NavMeshSurface surface;
 
+
     private NavMeshAgent agents;
     
 
@@ -35,7 +36,7 @@ public class RoomRandom : MonoBehaviour
         current = Instantiate(agent);
         agents = current.GetComponent<NavMeshAgent>();
         agents.transform.position = new Vector3(15, 1, 16);
-        current.GetComponent<NavAgentAI>().GenGoals(ref agents);
+        current.GetComponent<NavAgentAI>().GenGoals(ref agents, false/*Random.Range(0, 1).Equals(0)*/);
 
 
     }
