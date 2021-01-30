@@ -7,7 +7,7 @@ public class CameraTest: MonoBehaviour
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private float mouseSensitivity = 5;
-    [SerializeField] private float rayHeight = 1.6f;
+    [SerializeField] private float rayHeight = 2f;
     [SerializeField] private float jumpForce = 25;
     [SerializeField] private float runBoost = 2f;
     [SerializeField] private float crouchSpeed = 0.03f;
