@@ -7,6 +7,7 @@ public class DoorMine : WeaponTool
 {
     [SerializeField] private ParticleSystem explosion;
     private float triggerAngle = 30f;
+    private float expRadius = 10f;
 
     private bool isPlaced = false;
     private Quaternion trigger = Quaternion.identity;
@@ -46,6 +47,15 @@ public class DoorMine : WeaponTool
         if(isPlaced && Quaternion.Angle(trigger,transform.rotation) > triggerAngle)
         {
             ParticleSystem exp = Instantiate(explosion,transform.position,Quaternion.identity);
+
+            Collider[] cols = Physics.OverlapSphere(transform.position, expRadius, 1 << 10);
+            Debug.Log(1 << 10);
+            foreach (Collider col in cols)
+            {
+                Debug.Log(col.ToString() + "FUCK");
+                col.GetComponent<LivingThing>().OnMineHit();
+            }
+
             exp.Play();
             Debug.Log("Boom");
             Destroy(gameObject);
