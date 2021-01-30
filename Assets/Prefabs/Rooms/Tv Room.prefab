@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1639321582844358, guid: 0113c3998b05e9d47bad6dd3063c118b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 4054907251179674, guid: 0113c3998b05e9d47bad6dd3063c118b, type: 3}
       propertyPath: m_RootOrder
       value: 2

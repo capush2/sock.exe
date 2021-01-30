@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 4316848083944706711}
   - component: {fileID: 4316848083944706668}
   - component: {fileID: 4372762273001703755}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NavAgent (1)
-  m_TagString: Untagged
+  m_TagString: AI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goals: []
+  speed: 8
+  runSpeed: 16
+  radius: 10
+  isHardToCatch: 0
 --- !u!54 &4372762273001703755
 Rigidbody:
   m_ObjectHideFlags: 0

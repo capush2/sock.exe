@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTest : MonoBehaviour
+public class CameraTest : LivingThing
 {
     [SerializeField] private float speed = 5;
     [SerializeField] private float mouseSensitivity = 5;
@@ -23,6 +23,14 @@ public class CameraTest : MonoBehaviour
 
     private bool grounded = false;
     private float runMult = 1;
+    #region LivingThingVar
+    [SerializeField] private Vector3 home = Vector3.zero;
+    [SerializeField] private Vector3 p1 = Vector3.zero;
+    [SerializeField] private Vector3 p2 = Vector3.zero;
+    private Vector3 deathPos = Vector3.zero;
+    float counter = 0;
+    [SerializeField ]float flySpeed = 1f;
+    #endregion
 
     //TODO high jump on crouch?
 
@@ -37,8 +45,12 @@ public class CameraTest : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (manager.CanPlayerMoveFree)
+        if (true)
         {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                OnMineHit();
+            }
             Equip();
             PickupWeaponTool();
             UseEquippedWTool();
@@ -48,7 +60,7 @@ public class CameraTest : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (manager.CanPlayerMoveFree)
+        if (true)
         {
             Move();
             Look();
@@ -191,4 +203,57 @@ public class CameraTest : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             inventory.ToggleEquipped(2);
     }
+
+    #region LivingThing
+
+    override public void OnBearTrapHit()
+    {
+        base.OnBearTrapHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnMineHit()
+    {
+        counter = 0;
+        deathPos = transform.position;
+        rb.isKinematic = true;
+        StartCoroutine("GoHome");
+    }
+    IEnumerator GoHome()
+    {
+        for(; ; )
+        {
+            
+            float u = 1f - counter;
+            float t2 = counter * counter;
+            float u2 = u * u;
+            float u3 = u2 * u;
+            float t3 = t2 * counter;
+            // Still firing
+            Vector3 result =
+                    (u3) * deathPos +
+                    (3f * u2 * counter) * p1 +
+                    (3f * u * t2) * p2 +
+                    (t3) * home;
+
+
+            // Move the transform
+            transform.position = result;
+
+            // Update Counter
+            counter += flySpeed/1000000;
+
+            // Break the loop
+            if (counter >= 1)
+            {
+                Debug.Log("break");
+                rb.isKinematic = false;
+                yield break;
+            }
+            Debug.Log(counter);
+            yield return null;
+        }
+    }
+
+    #endregion
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavAgentAI : MonoBehaviour
+public class NavAgentAI : LivingThing
 {
-    const float BASE_HEIGHT = 4f, MIN_X = -30f, MAX_X = 30f, MIN_Z = -30f, MAX_Z = 30f;
+    const float BASE_HEIGHT = 4f, MIN_X = -30f, MAX_X = 30f, MAX_Y = 10f, MIN_Z = -30f, MAX_Z = 30f;
     [SerializeField]
     public Transform[] goals;
     [SerializeField] public float speed = 8f;
@@ -31,7 +31,7 @@ public class NavAgentAI : MonoBehaviour
         {
             if (isHardToCatch)
             {
-                agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), 1, Random.Range(MIN_Z, MAX_Z)));
+                agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
             } else
             {
                 currentPoint++;
@@ -59,7 +59,7 @@ public class NavAgentAI : MonoBehaviour
     {
         isHardToCatch = isHard;
         if (isHardToCatch) {
-            agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), 1, Random.Range(MIN_Z, MAX_Z)));
+            agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
         }
         else 
         {
@@ -68,7 +68,7 @@ public class NavAgentAI : MonoBehaviour
             for (int i = 0; i < nbPoint; i++)
             {
                 goals[i] =  new GameObject("goal").transform;
-                goals[i].Translate(new Vector3(Random.Range(MIN_X, MAX_X), 1, Random.Range(MIN_Z, MAX_Z)));
+                goals[i].Translate(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
                
             }
             currentPoint = 0;
@@ -120,4 +120,27 @@ public class NavAgentAI : MonoBehaviour
         }
          
     }
+
+    #region LivingThing
+
+    override public void OnBearTrapHit()
+    {
+        base.OnBearTrapHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnMineHit()
+    {
+        base.OnMineHit();
+        throw new System.NotImplementedException();
+    }
+
+    public override void OnNailHit()
+    {
+        base.OnNailHit();
+        throw new System.NotImplementedException();
+    }
+
+    #endregion
+
 }

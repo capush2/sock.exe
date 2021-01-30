@@ -1031,6 +1031,41 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
+      propertyPath: p1.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: p1.z
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: p2.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: p2.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: home.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: home.z
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
+      propertyPath: flySpeed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
+        type: 3}
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1909562502}
@@ -1052,12 +1087,12 @@ PrefabInstance:
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.32
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.2
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 878984205788746718, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
