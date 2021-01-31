@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            return true;
+            return !inSpecialScene;
         }
     }
 
@@ -48,12 +48,15 @@ public class GameManager : MonoBehaviour
         {
             if (cursorLocked)
             {
+                inSpecialScene = true;
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
+                inSpecialScene = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
+            uIManager.ToggleTablet();
             cursorLocked = !cursorLocked;
             //UIManager.ToggleTablet();
         }
@@ -67,5 +70,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         uIManager.Display($"Press {key.ToUpperInvariant()}");
+    }
+
+    public void SendPlayerMessage(string message)
+    {
+        if (message.Equals(string.Empty))
+        {
+            uIManager.ClearDisplay();
+            return;
+        }
+        uIManager.Display(message);
     }
 }

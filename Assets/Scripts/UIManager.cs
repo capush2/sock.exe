@@ -6,21 +6,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text PlayerTips;
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameObject.Find("Tablet");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private GameObject tablet;
 
     public void ToggleTablet()
     {
-
+        tablet.SetActive(!tablet.activeSelf);
     }
 
     public void Display(string message)
