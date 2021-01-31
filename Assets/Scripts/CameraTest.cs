@@ -45,7 +45,7 @@ public class CameraTest : LivingThing
     // Update is called once per frame
     private void Update()
     {
-        if (true)
+        if (manager.CanPlayerMoveFree)
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -60,7 +60,7 @@ public class CameraTest : LivingThing
 
     void FixedUpdate()
     {
-        if (true)
+        if (manager.CanPlayerMoveFree)
         {
             Move();
             Look();
@@ -179,6 +179,7 @@ public class CameraTest : LivingThing
         {
             lastLooked.gameObject.SetActive(false);
             inventory.AddToInventory(lastLooked.gameObject);
+            lastLooked.gameObject.transform.parent = gameObject.transform;
         }
     }
 
@@ -188,16 +189,16 @@ public class CameraTest : LivingThing
         {
             RaycastHit hitTool;
             Ray highlightRay = new Ray(cam.transform.position, cam.transform.forward);
-            Debug.DrawRay(cam.transform.position, cam.transform.forward * 10);
-            Physics.Raycast(highlightRay, out hitTool, 10);
+            Debug.DrawRay(cam.transform.position, cam.transform.forward * 30);
+            Physics.Raycast(highlightRay, out hitTool, 30);
             if (inventory.GetEquipped().GetComponent<IWeaponTool>().Use(hitTool))
             {
                 inventory.DelEquipped();
             }
             Debug.Log($"Uses equipped {inventory.GetEquipped()?.name}");
         }
-
     }
+
     private void Equip()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -233,6 +234,7 @@ public class CameraTest : LivingThing
         rb.isKinematic = true;
         StartCoroutine("GoHome");
     }
+    
     IEnumerator GoHome()
     {
         for(; ; )
