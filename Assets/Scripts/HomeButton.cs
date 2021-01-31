@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HomeButton : MonoBehaviour
 {
 	public Button home;
+	private bool first = true;
 
 	void Start()
 	{
@@ -15,5 +16,10 @@ public class HomeButton : MonoBehaviour
 	void TaskOnClick()
 	{
 		transform.parent.GetComponent<TabletSpritesContainer>().ChangeSprite();
+        if (first)
+        {
+			first = false;
+			GameObject.Find("WelcomeMessage").SetActive(false);
+        }
 	}
 }
