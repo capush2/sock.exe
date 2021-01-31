@@ -178,6 +178,10 @@ MonoBehaviour:
   crouchSpeed: 0.03
   inventory: {fileID: 0}
   manager: {fileID: 0}
+  home: {x: 0, y: 0, z: 0}
+  p1: {x: 0, y: 0, z: 0}
+  p2: {x: 0, y: 0, z: 0}
+  flySpeed: 5000
 --- !u!54 &4553439888619051788
 Rigidbody:
   m_ObjectHideFlags: 0
