@@ -45,18 +45,15 @@ public class InventoryUIManager : MonoBehaviour
             inventoryDisplay[num].GetComponent<IWeaponTool>().UnEquip();
             equipped = null;
             numEquipped = -1;
-            Debug.Log($"Has UNEquipped {num}");
         }
         else
         {
             if (hasEquipped) {
                 inventoryDisplay[numEquipped].GetComponent<IWeaponTool>().UnEquip();
-                Debug.Log($"Has UNEquipped {numEquipped}");
             }
             inventoryDisplay[num].GetComponent<IWeaponTool>().Equip();
             equipped = inventoryDisplay[num];
             numEquipped = num;
-            Debug.Log($"Has Equipped {num}");
         }
     }
 
@@ -64,6 +61,7 @@ public class InventoryUIManager : MonoBehaviour
     {
         return hasEquipped ? inventoryDisplay[numEquipped] : null;
     }
+
     public void DelEquipped()
     {
         if(hasEquipped)

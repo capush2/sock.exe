@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,22 +18,32 @@ public class NavAgentAI : LivingThing
     NavMeshAgent agent;
     private Transform player;
     bool isRunningAway = false;
+    Vector3 lastPos = Vector3.zero;
     [SerializeField] bool isHardToCatch = false;
+
+    Animator anim;
+    Rigidbody rb;
+    [SerializeField] private float animTurnSpeed = 0.01f;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        GenGoals(ref agent, isHardToCatch);        
+        GenGoals(ref agent, isHardToCatch);
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckState();
+
         if(IsDestinationReach())
         {
             if (isHardToCatch)
             {
-                agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
+                agent.SetDestination(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
             } else
             {
                 currentPoint++;
@@ -49,6 +60,21 @@ public class NavAgentAI : LivingThing
             RunAway();
         }
     }
+
+    private void CheckState()
+    {
+        //Animator
+        float relSpeed = Vector3.Distance(transform.position, lastPos) * Time.deltaTime;
+        anim.SetFloat("velocity", relSpeed);
+        Vector3 dir = (lastPos - transform.position).normalized;
+        Debug.Log(relSpeed);
+
+        //Rotation
+        transform.LookAt(Vector3.Slerp(transform.position + transform.forward,lastPos,animTurnSpeed), Vector3.up);
+
+        lastPos = transform.position;
+    }
+
     bool IsDestinationReach()
     {
         float distanceToTarget = Vector3.Distance(agent.transform.position, agent.destination);
@@ -59,16 +85,16 @@ public class NavAgentAI : LivingThing
     {
         isHardToCatch = isHard;
         if (isHardToCatch) {
-            agent.SetDestination(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
+            agent.SetDestination(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
         }
         else 
         {
-            int nbPoint = Random.Range(2, 10);
+            int nbPoint = UnityEngine.Random.Range(2, 10);
             goals = new Transform[nbPoint];
             for (int i = 0; i < nbPoint; i++)
             {
                 goals[i] =  new GameObject("goal").transform;
-                goals[i].Translate(new Vector3(Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * Random.Range(0, 1)), Random.Range(MIN_Z, MAX_Z)));
+                goals[i].Translate(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
                
             }
             currentPoint = 0;
@@ -94,24 +120,24 @@ public class NavAgentAI : LivingThing
             {
                 if (player.position.x < 0)
                 {
-                    awayDest.x = Random.Range(agent.transform.position.x, MAX_X);
+                    awayDest.x = UnityEngine.Random.Range(agent.transform.position.x, MAX_X);
                 }
                 else
                 {
-                    awayDest.x = Random.Range(MIN_X, player.position.x);
+                    awayDest.x = UnityEngine.Random.Range(MIN_X, player.position.x);
                 }
-                awayDest.z = Random.Range(MIN_Z, MAX_Z);
+                awayDest.z = UnityEngine.Random.Range(MIN_Z, MAX_Z);
             }
             else
             {
-                awayDest.x = Random.Range(MIN_X, MAX_X);
+                awayDest.x = UnityEngine.Random.Range(MIN_X, MAX_X);
                 if (agent.transform.position.z < 0)
                 {
-                    awayDest.x = Random.Range(player.position.z, MAX_Z);
+                    awayDest.x = UnityEngine.Random.Range(player.position.z, MAX_Z);
                 }
                 else
                 {
-                    awayDest.x = Random.Range(MIN_Z, player.position.z);
+                    awayDest.x = UnityEngine.Random.Range(MIN_Z, player.position.z);
                 }
             }
             awayDest.y = agent.transform.position.y;

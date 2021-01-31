@@ -8,14 +8,20 @@ public class NailGun : WeaponTool
     [SerializeField]
     GameObject nailPrefab = null;
 
-    [SerializeField]
-    Vector3 relativeNailStartCoords = new Vector3(0.29f, 1f, 1.04f);
-
     public override bool Use(RaycastHit hit)
     {
         if (equipped)
         {
-            Instantiate(nailPrefab, gameObject.transform.position + relativeNailStartCoords, Quaternion.identity);
+            Ray ray = gameObject.transform.parent.transform.parent.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            GameObject current = Instantiate(nailPrefab);
+            current.transform.position = gameObject.transform.position;
+            if (Physics.Raycast(ray, out hit))
+            {
+                current.transform.LookAt(hit.point);
+            } else
+            {
+                current.transform.rotation = gameObject.transform.rotation;
+            }
             gameObject.SetActive(false);
             return true;
         }
@@ -24,10 +30,7 @@ public class NailGun : WeaponTool
 
     public override void Equip()
     {
-        GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
-        gameObject.transform.position = rightHand.transform.position;
-        gameObject.transform.parent = rightHand.transform;
-        gameObject.transform.LookAt(transform.parent.forward);
         base.Equip();
+        transform.rotation = gameObject.transform.parent.transform.parent.rotation;
     }
 }
