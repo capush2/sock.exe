@@ -13,6 +13,8 @@ TagManager:
   - toes
   - collar
   - fold
+  - nail
+  - entry
   layers:
   - Default
   - TransparentFX

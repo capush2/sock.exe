@@ -24,4 +24,6 @@ public class UIManager : MonoBehaviour
         PlayerTips.text = "";
         PlayerTips.transform.parent.GetComponent<Image>().enabled = false;
     }
+
+    
 }

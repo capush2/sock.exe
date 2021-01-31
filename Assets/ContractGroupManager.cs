@@ -43,10 +43,11 @@ public class ContractGroupManager : MonoBehaviour
             GameObject current;
             foreach (var p in prompts)
             {
-                p.SetActive(true);
+                p.transform.parent.gameObject.SetActive(true);
                 p.GetComponent<Text>().text = loadedPrompts[Random.Range(0,13)];
                 current = Instantiate(prefab);
-                current.GetComponent<VanGogh>().ApplyTheStyle((PossibleColors)Random.Range(0,(int)PossibleColors.Size), (PossibleColors)Random.Range(0, (int)PossibleColors.Size), (PossibleColors)Random.Range(0, (int)PossibleColors.Size));
+                //current.GetComponent<VanGogh>().ApplyTheStyle((PossibleColors)Random.Range(0,(int)PossibleColors.Size), (PossibleColors)Random.Range(0, (int)PossibleColors.Size), (PossibleColors)Random.Range(0, (int)PossibleColors.Size));
+                current.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Black, PossibleColors.Black, PossibleColors.Black);
                 current.transform.Find("Background").GetComponent<RawImage>().color = p.transform.parent.GetComponent<Button>().colors.normalColor;
                 current.transform.Find("Button").gameObject.SetActive(false);
                 current.transform.parent = p.transform.parent;
@@ -57,7 +58,7 @@ public class ContractGroupManager : MonoBehaviour
         {
             prompts[0].transform.parent.gameObject.SetActive(false);
             prompts[2].transform.parent.gameObject.SetActive(false);
-            prompts[1].GetComponent<Text>().text = "This is your current task";
+            prompts[1].GetComponent<Text>().text = "This is your current task. Click to validate.";
             targetedSock.transform.parent = prompts[1].transform.parent;
             targetedSock.transform.position = targetedSock.transform.parent.position + new Vector3(prompts[1].transform.parent.GetComponent<RectTransform>().rect.width / 4 - targetedSock.GetComponent<RectTransform>().rect.width / 2, 0, 0);
         }

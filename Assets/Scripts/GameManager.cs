@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private bool inSpecialScene = false;
+    private bool inSpecialScene = true;
     public static int money = 200;
     // Start is called before the first frame update
     [SerializeField] private UIManager uIManager;
@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator Congrats()
+    {
+        SendMessage("Congrats! +200$");
+        yield return new WaitForSecondsRealtime(3);
+    }
+
     void Awake()
     {
         //Vérifier sauvegarde
@@ -27,8 +33,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        cursorLocked = true;
+        Cursor.lockState = CursorLockMode.None;
+        cursorLocked = false;
         //StartCoroutine("IntroductionScene");
     }
 

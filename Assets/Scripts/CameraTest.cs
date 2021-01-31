@@ -38,7 +38,11 @@ public class CameraTest : LivingThing
     #endregion
 
     //TODO high jump on crouch?
-
+    IEnumerator Welcome()
+    {
+        manager.SendMessage("Press E!");
+        yield return new WaitForSecondsRealtime(3);
+    }
 
     // Start is called before the first frame update
     void Start()
