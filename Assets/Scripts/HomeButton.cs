@@ -14,6 +14,6 @@ public class HomeButton : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		Debug.Log("You have clicked the button!");
+		transform.parent.GetComponent<TabletSpritesContainer>().ChangeSprite();
 	}
 }
