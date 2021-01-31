@@ -208,12 +208,22 @@ public class CameraTest : LivingThing
             inventory.ToggleEquipped(2);
     }
 
+    private IEnumerator BearDelay()
+    {
+        float prevSpeed = speed;
+        float prevJmpForce = jumpForce;
+        speed = 0;
+        jumpForce = 0;
+        yield return new WaitForSecondsRealtime(5);
+        speed = prevSpeed;
+        jumpForce = prevJmpForce;
+    }
+
     #region LivingThing
 
     override public void OnBearTrapHit()
     {
-        base.OnBearTrapHit();
-        throw new System.NotImplementedException();
+        StartCoroutine(BearDelay());
     }
 
     public override void OnMineHit()

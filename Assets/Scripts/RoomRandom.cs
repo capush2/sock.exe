@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class RoomRandom : MonoBehaviour
 {
+    const float MIN_X = -30f, MAX_X = 30f, MAX_Y = 10f, MIN_Z = -30f, MAX_Z = 30f;
+    const int MINSOCKS = 3, NBSOCKS = 6;
     [SerializeField] private GameObject[] oneRoomTall;
     [SerializeField] private GameObject[] stairs;
     private GameObject current;
@@ -14,7 +16,7 @@ public class RoomRandom : MonoBehaviour
     public NavMeshSurface surface;
 
 
-    private NavMeshAgent agents;
+    private NavMeshAgent[] agents;
 
     private float floorHeight = 8f;
     
@@ -35,11 +37,13 @@ public class RoomRandom : MonoBehaviour
             
 
         current = Instantiate(agent);
-        agents = current.GetComponent<NavMeshAgent>();
-        agents.transform.position = new Vector3(15, 1, 16);
-        current.GetComponent<NavAgentAI>().GenGoals(ref agents, false/*Random.Range(0, 1).Equals(0)*/);
-
-
+        agents = new NavMeshAgent[UnityEngine.Random.Range(MINSOCKS, NBSOCKS)];
+        agents[0] = current.GetComponent<NavMeshAgent>();
+        for (int i = 0; i < agents.Length; i++)
+        {
+            agents[i] = Instantiate(agents[0]);
+            agents[i].transform.position = new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z));
+        }
     }
 
     private void SpawnRooms(int height, List<GameObject> randomRooms)

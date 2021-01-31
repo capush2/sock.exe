@@ -10,7 +10,8 @@ public class NavAgentAI : LivingThing
     public Transform[] goals;
     [SerializeField] public float speed = 8f;
     [SerializeField] public float runSpeed = 16f;
-    [SerializeField] public float radius = 10f;
+    [SerializeField] public float radius = 0.5f;
+    float detectionradius = 8f;
     float destinationReachedTreshold = 1.01f;
     private int currentPoint;
     NavMeshAgent agent;
@@ -44,7 +45,7 @@ public class NavAgentAI : LivingThing
             
         }
         
-        if((player.position.x > agent.transform.position.x - agent.radius &&  player.position.x < agent.transform.position.x + agent.radius) && (player.position.y > agent.transform.position.y - agent.radius && player.position.y < agent.transform.position.y + agent.radius) && (player.position.z > agent.transform.position.z - agent.radius && player.position.z < agent.transform.position.z + agent.radius)) 
+        if((player.position.x > agent.transform.position.x - detectionradius &&  player.position.x < agent.transform.position.x + detectionradius) && (player.position.y > agent.transform.position.y - detectionradius && player.position.y < agent.transform.position.y + detectionradius) && (player.position.z > agent.transform.position.z - detectionradius && player.position.z < agent.transform.position.z + detectionradius)) 
         {
             RunAway();
         }

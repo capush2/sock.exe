@@ -30,14 +30,7 @@ public class BearTrap : WeaponTool
             transform.GetChild(3).eulerAngles += new Vector3(85, 0, 0);
             transform.GetChild(4).eulerAngles += new Vector3(85, 0, 0);
             opened = false;
-
-            if (other.gameObject.tag == "Player")
-            {
-                
-            } else if (other.gameObject.tag == "AI")
-            {
-
-            }
+            other.gameObject.GetComponent<LivingThing>().OnBearTrapHit();
         }
     }
 
