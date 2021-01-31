@@ -150,12 +150,14 @@ public class CameraTest : LivingThing
                 {
                     lastLooked = hitView.transform;
                     lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+                    manager.SendPlayerTip("F");
                 }
             }
             else if (lastLooked != null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 lastLooked = null;
+                manager.SendPlayerTip("");
             }
         }
         else
@@ -166,6 +168,7 @@ public class CameraTest : LivingThing
             }
 
             lastLooked = null;
+            manager.SendPlayerTip("");
         }
     }
 
