@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9af9662f39d2f24285206a917e00d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Texture2D: {fileID: 21300000, guid: 6005253321ae8474fafb3e1503eebbd7, type: 3}
+  Texture2D: {fileID: 21300000, guid: c3ae6a33154d7b5469254fc31ee9e778, type: 3}
   explosion: {fileID: 2961601332565239166, guid: 0ef80241a81742448814782177b50d07,
     type: 3}
   throwForce: 20
