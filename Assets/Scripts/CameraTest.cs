@@ -45,7 +45,7 @@ public class CameraTest : LivingThing
     // Update is called once per frame
     private void Update()
     {
-        if (true)
+        if (manager.CanPlayerMoveFree)
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -60,7 +60,7 @@ public class CameraTest : LivingThing
 
     void FixedUpdate()
     {
-        if (true)
+        if (manager.CanPlayerMoveFree)
         {
             Move();
             Look();
