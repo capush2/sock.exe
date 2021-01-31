@@ -36,7 +36,7 @@ public class ContractGroupManager : MonoBehaviour
         contractGroup.SetActive(true);
         foreach(var p in prompts)
         {
-            //p.GetComponent<Text>().text = 
+            p.GetComponent<Text>().text = loadedPrompts[Random.Range(0,13)];
         }
         gameObject.SetActive(false);
     }
