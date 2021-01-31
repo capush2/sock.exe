@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class LeaveZoneTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameManager manager;
+    private Coroutine launchedCoroutine;
+    [SerializeField] private Transform teleportLocation;
+    void OnTriggerEnter(Collider other)
     {
-        
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("HasEnteredLeaveZone");
+            launchedCoroutine = StartCoroutine(TeleportCountdown(other.gameObject));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerExit(Collider other)
     {
-        
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("HasLeftLeaveZone");
+            StopCoroutine(launchedCoroutine);
+        }
+    }
+
+    IEnumerator TeleportCountdown(GameObject player)
+    {
+        for(int i = 5; i >= 0; i--)
+        {
+            manager.SendPlayerMessage($"Leaving in {i}");
+            yield return new WaitForSecondsRealtime(1);
+        }
+        manager.SendPlayerMessage(string.Empty);
+        player.transform.position = teleportLocation.position;
     }
 }

@@ -149,8 +149,9 @@ public class CameraTest : LivingThing
                 if (lastLooked != hitView.transform)
                 {
                     lastLooked = hitView.transform;
-                    lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
-                    manager.SendPlayerTip("F");
+                    lastLooked.GetComponent<WeaponTool>().ToggleFlash();
+                    if(!lastLooked.GetComponent<WeaponTool>().Used)
+                        manager.SendPlayerTip("F");
                 }
             }
             else if (lastLooked != null)
