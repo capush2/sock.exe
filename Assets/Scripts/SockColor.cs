@@ -99,4 +99,45 @@ public class SockColor : MonoBehaviour
         }
         return Random.Range(0, 1) == 1 ? first : second;
     }
+
+    public static Color32 GetColorCode(PossibleColors color) 
+    {
+        switch (color)
+        {
+
+            case PossibleColors.Red:
+                return new Color32(130, 13, 20, 255);
+
+            case PossibleColors.Blue:
+                return new Color32(9, 10, 183, 255);
+
+            case PossibleColors.Yellow:
+                return new Color32(255, 234, 0, 255);
+
+            case PossibleColors.Purple:
+                return new Color32(98, 0, 185, 255);
+
+            case PossibleColors.Orange:
+                return new Color32(233, 98, 0, 255);
+
+            case PossibleColors.Green:
+                return new Color32(0, 140, 18, 255);
+                            
+            case PossibleColors.Black:
+                return new Color32(0, 0, 0, 255);
+
+            case PossibleColors.Gray:
+                return new Color32(72, 72, 72, 255);
+
+            case PossibleColors.Pink:
+                return new Color32(173, 0, 149, 255);
+
+            case PossibleColors.White:
+            default:
+                return new Color32(255, 255, 255, 255);
+        }
+
+        
+    }
+
 }
