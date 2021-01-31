@@ -37,6 +37,13 @@ public class SockColor : MonoBehaviour
         }
     }
 
+    public void Colorize(PossibleColors[] colors)
+    {
+        color[0] = colors[0];
+        color[1] = colors[1];
+        color[2] = colors[2];
+    }
+
     private void changeColor(int index)
     {
         piecesToColor[index].GetComponent<SkinnedMeshRenderer>().material = materialColors[(int)color[index]];

@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class BreedingGroup : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> debugList;
-    [SerializeField] private GameObject prefabPicture;
     // Start is called before the first frame update
     void Start()
     {
-        //Afficher(GameObject.Find("DickBoy").GetComponent<CameraTest>().SockInventory);
-        Afficher(debugList);
+        Afficher();
     }
 
-    void Afficher(List<GameObject> list)
+    public void Afficher()
     {
+        List<GameObject> list = GameObject.Find("DickBoy").GetComponent<CameraTest>().SockInventory;
         GameObject current;
         for (int i = 0; i < list.Count; i++)
         {
-            current = Instantiate(prefabPicture);
-            current.GetComponent<VanGogh>().applyTheStyle(list[i].GetComponent<SockColor>().color[0], list[i].GetComponent<SockColor>().color[1], list[i].GetComponent<SockColor>().color[2]);
-            Debug.LogWarning($"From {list[i].GetComponent<SockColor>().color[0]} {list[i].GetComponent<SockColor>().color[1]} {list[i].GetComponent<SockColor>().color[2]}");
+            current = list[i];
+            current.SetActive(true);
+            
             GameObject daddy = transform.Find("InventaireSlots").gameObject;
             current.transform.SetParent(daddy.transform);
             current.transform.localScale = new Vector3(1, 1, 1);
@@ -33,6 +31,14 @@ public class BreedingGroup : MonoBehaviour
 
             current.transform.position = daddy.transform.position;
             current.transform.position += new Vector3((i % 3 + 1) * hGap - side / 2, -(Mathf.FloorToInt(i / 3) + 1/2f) * vGap - side / 2 + side/4, 0);
+        }
+    }
+    public void Effacer()
+    {
+        GameObject daddy = transform.Find("InventaireSlots").gameObject;
+        foreach(var i in daddy.transform)
+        {
+            Destroy(transform.gameObject);
         }
     }
 }

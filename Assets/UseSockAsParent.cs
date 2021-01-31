@@ -7,6 +7,7 @@ public class UseSockAsParent : MonoBehaviour
 {
     private GameObject female, male;
     private Button theButton;
+    public static int Count = 0;
     void Start()
     {
         theButton = GetComponent<Button>();
@@ -17,7 +18,18 @@ public class UseSockAsParent : MonoBehaviour
 
     void UseAParent()
     {
-        GameObject copy = Instantiate(transform.parent.gameObject, female.transform);
-        Destroy(copy.GetComponentInChildren<Button>().gameObject);
+        GameObject copy = transform.parent.gameObject;
+        if (Count % 2 == 0)
+        {
+            copy.transform.SetParent(female.transform);
+        }
+        else
+        {
+            copy.transform.SetParent(male.transform);
+        }
+        
+        copy.transform.localPosition = new Vector3(0, 0, 0);
+        Count++;
+        copy.GetComponentInChildren<Button>().enabled = false;
     }
 }

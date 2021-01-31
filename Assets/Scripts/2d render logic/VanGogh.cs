@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class VanGogh : MonoBehaviour
 {
-    [SerializeField] PossibleColors primaryColor = PossibleColors.Blue;
-    [SerializeField] PossibleColors secondaryColor = PossibleColors.Red;
-    [SerializeField] PossibleColors terceryColor = PossibleColors.Green;
+    [SerializeField] PossibleColors primaryColor;
+    [SerializeField] PossibleColors secondaryColor;
+    [SerializeField] PossibleColors terceryColor;
     Image[] socks;
-    // Start is called before the first frame update
-    void Start()
-    {
-        //applyTheStyle(primaryColor, secondaryColor, terceryColor);
-    }
 
-    public void applyTheStyle(PossibleColors prim, PossibleColors sec, PossibleColors terc)
+    public void ApplyTheStyle(PossibleColors prim, PossibleColors sec, PossibleColors terc)
     {
+        primaryColor = prim;
+        secondaryColor = sec;
+        terceryColor = terc;
         socks = GetComponentsInChildren<Image>();
         for(int i = 0; i < socks.Length; i++)
         {
@@ -38,6 +36,10 @@ public class VanGogh : MonoBehaviour
             }
         }
         
+    }
+    public PossibleColors[] GetArray()
+    {
+        return new PossibleColors[3] { primaryColor, secondaryColor, terceryColor};
     }
 
     

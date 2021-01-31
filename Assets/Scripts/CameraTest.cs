@@ -14,6 +14,8 @@ public class CameraTest : LivingThing
 
     [SerializeField] private InventoryUIManager inventory;
     [SerializeField] private GameManager manager;
+    [SerializeField] private GameObject prefabPicture;
+
     private Transform lastLooked = null;
 
     private Rigidbody rb;
@@ -23,7 +25,7 @@ public class CameraTest : LivingThing
     private bool grounded = false;
     private float runMult = 1;
 
-    public List<GameObject> SockInventory { get; private set; } = new List<GameObject>();
+    [SerializeField] public List<GameObject> SockInventory = new List<GameObject>(9);
 
     #region LivingThingVar
     [SerializeField] private Vector3 home = Vector3.zero;
@@ -43,6 +45,14 @@ public class CameraTest : LivingThing
     {
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+        GameObject current = Instantiate(prefabPicture);
+        current.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Black, PossibleColors.Black, PossibleColors.Black);
+        SockInventory.Add(current);
+        current.SetActive(false);
+        GameObject current2 = Instantiate(prefabPicture);
+        current2.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Red, PossibleColors.Yellow, PossibleColors.Black);
+        SockInventory.Add(current2);
+        current2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -78,11 +88,14 @@ public class CameraTest : LivingThing
         if (deadSock == null)
             return;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && SockInventory.Count < 9)
         {
-            SockInventory.Add(deadSock);
+            GameObject current = Instantiate(prefabPicture);
+            current.GetComponent<VanGogh>().ApplyTheStyle(deadSock.GetComponent<SockColor>().color[0], deadSock.GetComponent<SockColor>().color[1], deadSock.GetComponent<SockColor>().color[2]);
+            SockInventory.Add(current);
+            current.SetActive(false);
             deadSock.SetActive(false);
-            StartCoroutine("ShowPickSock");
+            StartCoroutine(ShowPickSock());
         }
     }
 

@@ -1,66 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class Breeder : MonoBehaviour
 {
-    //To remove once we have the interface going
     [SerializeField] private GameObject male;
     [SerializeField] private GameObject female;
+    [SerializeField] private BreedingGroup bgroup;
+    [SerializeField] private GameObject prefabPicture;
 
     void Start()
     {
-        //This can also be removed
-        PossibleColors[] mColors = male.GetComponent<SockColor>().color;
-        PossibleColors[] fColors = female.GetComponent<SockColor>().color;
-        Breed(mColors, fColors);
+        GetComponent<Button>().onClick.AddListener(Breed);
     }
 
-    public PossibleColors[] Breed(PossibleColors[] female, PossibleColors[] male)
+    public void Breed()
     {
+        PossibleColors[] mColors = male.GetComponentInChildren<VanGogh>().GetArray();
+        PossibleColors[] fColors = female.GetComponentInChildren<VanGogh>().GetArray();
         PossibleColors[] child = new PossibleColors[3];
         switch (Random.Range(0,3))//primary
         {
             case 0:
-                child[0] = female[0];
+                child[0] = fColors[0];
                 break;
             case 1:
-                child[0] = SockColor.mixColor(female[0], male[0]);
+                child[0] = SockColor.mixColor(fColors[0], mColors[0]);
                 break;
             default:
-                child[0] = male[0];
+                child[0] = mColors[0];
                 break;
         }
 
         switch (Random.Range(0, 3))//secondary
         {
             case 0:
-                child[1] = male[1];
+                child[1] = mColors[1];
                 break;
             case 1:
-                child[1] = SockColor.mixColor(female[1], male[1]);
+                child[1] = SockColor.mixColor(fColors[1], mColors[1]);
                 break;
             default:
-                child[1] = female[1];
+                child[1] = fColors[1];
                 break;
         }
 
         switch (Random.Range(0, 3))//tiercary
         {
             case 0:
-                child[2] = female[2];
+                child[2] = fColors[2];
                 break;
             case 1:
-                child[2] = male[2];
+                child[2] = mColors[2];
                 break;
             default:
-                child[2] = SockColor.mixColor(female[2], male[2]);
+                child[2] = SockColor.mixColor(fColors[2], mColors[2]);
                 break;
         }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Remove(male.GetComponentInChildren<VanGogh>().gameObject);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Remove(female.GetComponentInChildren<VanGogh>().gameObject);
+        GameObject current = Instantiate(prefabPicture);
+        current.GetComponent<VanGogh>().ApplyTheStyle(child[0],child[1],child[2]);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Add(current);
+        bgroup.Effacer();
+        bgroup.Afficher();
 
-        Debug.Log(child[0]);
-        Debug.Log(child[1]);
-        Debug.Log(child[2]);
-
-        return child;
     }
 }
