@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class BearTrap : WeaponTool
 {
-    private bool opened = true;
+    private bool opened = false;
 
     public override bool Use(RaycastHit hit)
     {
-        throw new System.NotImplementedException();
+        if (hit.collider.gameObject.tag == "Floor")
+        {
+            transform.position = hit.point;
+            GameObject container = new GameObject();
+            container.transform.parent = hit.collider.transform;
+            transform.parent = container.transform;
+            transform.eulerAngles = hit.normal.normalized * 90;
+
+            opened = true;
+            Used = true;
+            return true;
+        }
+        return false;
     }
 
-    //private IEnumerator OnTriggerEnter(Collider other)
-    //{
-    //    if (opened)
-    //    {
-    //        transform.GetChild(3).eulerAngles += new Vector3(85, 0, 0);
-    //        transform.GetChild(4).eulerAngles += new Vector3(85, 0, 0);
-    //        opened = false;
-    //        other.gameObject.GetComponent<BearTrapTest>().Stop();
-    //        yield return new WaitForSecondsRealtime(5);
-    //        other.gameObject.GetComponent<BearTrapTest>().BreakFree();
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (opened && other.gameObject.layer == LayerMask.NameToLayer("Living"))
+        {
+            transform.GetChild(3).eulerAngles += new Vector3(85, 0, 0);
+            transform.GetChild(4).eulerAngles += new Vector3(85, 0, 0);
+            opened = false;
+            other.gameObject.GetComponent<LivingThing>().OnBearTrapHit();
+        }
+    }
 
 }

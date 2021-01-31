@@ -58,4 +58,14 @@ public class GameManager : MonoBehaviour
             //UIManager.ToggleTablet();
         }
     }
+
+    public void SendPlayerTip(string key)
+    {
+        if (key.Equals(string.Empty))
+        {
+            uIManager.ClearDisplay();
+            return;
+        }
+        uIManager.Display($"Press {key.ToUpperInvariant()}");
+    }
 }

@@ -23,6 +23,14 @@ public class CameraTest : LivingThing
 
     private bool grounded = false;
     private float runMult = 1;
+    #region LivingThingVar
+    [SerializeField] private Vector3 home = Vector3.zero;
+    [SerializeField] private Vector3 p1 = Vector3.zero;
+    [SerializeField] private Vector3 p2 = Vector3.zero;
+    private Vector3 deathPos = Vector3.zero;
+    float counter = 0;
+    [SerializeField ]float flySpeed = 1f;
+    #endregion
 
     //TODO high jump on crouch?
 
@@ -30,8 +38,6 @@ public class CameraTest : LivingThing
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
     }
@@ -41,6 +47,10 @@ public class CameraTest : LivingThing
     {
         if (true)
         {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                OnMineHit();
+            }
             Equip();
             PickupWeaponTool();
             UseEquippedWTool();
@@ -140,12 +150,14 @@ public class CameraTest : LivingThing
                 {
                     lastLooked = hitView.transform;
                     lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
+                    manager.SendPlayerTip("F");
                 }
             }
             else if (lastLooked != null)
             {
                 lastLooked.GetComponent<IWeaponTool>().ToggleFlash();
                 lastLooked = null;
+                manager.SendPlayerTip("");
             }
         }
         else
@@ -156,12 +168,13 @@ public class CameraTest : LivingThing
             }
 
             lastLooked = null;
+            manager.SendPlayerTip("");
         }
     }
 
     private void PickupWeaponTool()
     {
-        if (lastLooked != null && Input.GetKeyDown(KeyCode.F))
+        if (lastLooked != null && Input.GetKeyDown(KeyCode.F) && !lastLooked.GetComponent<WeaponTool>().Used)
         {
             lastLooked.gameObject.SetActive(false);
             inventory.AddToInventory(lastLooked.gameObject);
@@ -194,18 +207,69 @@ public class CameraTest : LivingThing
             inventory.ToggleEquipped(2);
     }
 
+    private IEnumerator BearDelay()
+    {
+        float prevSpeed = speed;
+        float prevJmpForce = jumpForce;
+        speed = 0;
+        jumpForce = 0;
+        print("Why you slut");
+        yield return new WaitForSecondsRealtime(5);
+        print("Why you whore");
+        speed = prevSpeed;
+        jumpForce = prevJmpForce;
+    }
+
     #region LivingThing
 
     override public void OnBearTrapHit()
     {
-        base.OnBearTrapHit();
-        throw new System.NotImplementedException();
+        print("Why you ape");
+        StartCoroutine(BearDelay());
+        print("Why you fiend");
     }
 
     public override void OnMineHit()
     {
-        base.OnMineHit();
-        throw new System.NotImplementedException();
+        counter = 0;
+        deathPos = transform.position;
+        rb.isKinematic = true;
+        StartCoroutine("GoHome");
+    }
+    IEnumerator GoHome()
+    {
+        for(; ; )
+        {
+            
+            float u = 1f - counter;
+            float t2 = counter * counter;
+            float u2 = u * u;
+            float u3 = u2 * u;
+            float t3 = t2 * counter;
+            // Still firing
+            Vector3 result =
+                    (u3) * deathPos +
+                    (3f * u2 * counter) * p1 +
+                    (3f * u * t2) * p2 +
+                    (t3) * home;
+
+
+            // Move the transform
+            transform.position = result;
+
+            // Update Counter
+            counter += flySpeed/1000000;
+
+            // Break the loop
+            if (counter >= 1)
+            {
+                Debug.Log("break");
+                rb.isKinematic = false;
+                yield break;
+            }
+            Debug.Log(counter);
+            yield return null;
+        }
     }
 
     #endregion

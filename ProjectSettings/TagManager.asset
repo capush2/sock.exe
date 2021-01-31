@@ -8,6 +8,8 @@ TagManager:
   - WeaponTool
   - Door
   - RightHandPos
+  - AI
+  - Floor
   layers:
   - Default
   - TransparentFX

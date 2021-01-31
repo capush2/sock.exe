@@ -177,6 +177,7 @@ MonoBehaviour:
   runBoost: 2
   crouchSpeed: 0.03
   inventory: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!54 &4553439888619051788
 Rigidbody:
   m_ObjectHideFlags: 0
