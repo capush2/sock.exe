@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private bool inSpecialScene = true;
+    private bool inSpecialScene = false;
     // Start is called before the first frame update
     [SerializeField] private UIManager uIManager;
     private bool cursorLocked;
