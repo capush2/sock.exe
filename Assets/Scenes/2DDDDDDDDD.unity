@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 182220302}
   - component: {fileID: 182220301}
   m_Layer: 0
-  m_Name: New Sprite (3)
-  m_TagString: Untagged
+  m_Name: fold
+  m_TagString: fold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,13 +195,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182220300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70792454, y: 1.6838326, z: -4.673765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.78319556, y: -2.54812, z: 10.384829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 524233223}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 455974277}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &210134078
 GameObject:
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 210134080}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210134078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.523, y: 0.4737, z: 4.673765}
+  m_LocalPosition: {x: 0.52300006, y: 0.47370005, z: 4.673765}
   m_LocalScale: {x: 0.90654254, y: 0.87492454, z: 1}
   m_Children: []
   m_Father: {fileID: 1121790249}
@@ -274,7 +274,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fe1e443c21ed1cd4f88dc5ff5ba8a2e4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.030838395, g: 0.13590474, b: 0.9339623, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -284,6 +284,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &455974275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455974277}
+  - component: {fileID: 455974276}
+  m_Layer: 0
+  m_Name: Sock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455974276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455974275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b1161ab24186d4aaf658b002f66831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryColor: {r: 0, g: 0, b: 1, a: 1}
+  secondaryColor: {r: 1, g: 0, b: 0, a: 1}
+  terceryColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!4 &455974277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455974275}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4911201, y: 4.2319527, z: -15.058594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 880339559}
+  - {fileID: 1312485402}
+  - {fileID: 1121790249}
+  - {fileID: 182220302}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504255053
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +429,7 @@ GameObject:
   - component: {fileID: 524233224}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: fold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -392,7 +442,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524233222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.523, y: -0.331, z: 4.67376}
+  m_LocalPosition: {x: 0.5230406, y: -0.3310001, z: 4.6737595}
   m_LocalScale: {x: 1.2092257, y: 0.84423786, z: 1}
   m_Children: []
   m_Father: {fileID: 182220302}
@@ -459,8 +509,8 @@ GameObject:
   - component: {fileID: 880339559}
   - component: {fileID: 880339558}
   m_Layer: 0
-  m_Name: New Sprite
-  m_TagString: Untagged
+  m_Name: Toes
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,16 +572,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880339557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6055778, y: 2.2967863, z: -4.28125}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8855423, y: -1.9351664, z: 10.777344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1318649494}
   - {fileID: 2055553947}
   - {fileID: 1334166062}
   - {fileID: 1256166650}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 455974277}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991766291
 GameObject:
@@ -636,8 +686,8 @@ GameObject:
   - component: {fileID: 1121790249}
   - component: {fileID: 1121790248}
   m_Layer: 0
-  m_Name: New Sprite (2)
-  m_TagString: Untagged
+  m_Name: Ankle
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,13 +749,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121790247}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70792454, y: 1.6838326, z: -4.673765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.78319556, y: -2.54812, z: 10.384829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 210134079}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 455974277}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256166649
 GameObject:
@@ -719,7 +769,7 @@ GameObject:
   - component: {fileID: 1256166651}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -799,8 +849,8 @@ GameObject:
   - component: {fileID: 1312485402}
   - component: {fileID: 1312485401}
   m_Layer: 0
-  m_Name: New Sprite (1)
-  m_TagString: Untagged
+  m_Name: Collar
+  m_TagString: collar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -862,13 +912,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312485400}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70792454, y: 1.6838326, z: -4.673765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.78319556, y: -2.54812, z: 10.384829}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1675372811}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 455974277}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318649493
 GameObject:
@@ -882,7 +932,7 @@ GameObject:
   - component: {fileID: 1318649495}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,7 +945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318649493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 0.8488, z: 4.67376}
+  m_LocalPosition: {x: 0.62539995, y: 0.84879994, z: 4.6737595}
   m_LocalScale: {x: 0.88528925, y: 0.49760512, z: 1}
   m_Children: []
   m_Father: {fileID: 880339559}
@@ -941,7 +991,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fe1e443c21ed1cd4f88dc5ff5ba8a2e4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.050418302, g: 0.27092713, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -963,7 +1013,7 @@ GameObject:
   - component: {fileID: 1334166063}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,7 +1094,7 @@ GameObject:
   - component: {fileID: 1675372812}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: collar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1057,8 +1107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1675372810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.523, y: 1.058, z: 4.673765}
-  m_LocalScale: {x: 1.1090331, y: 0.37695265, z: 1}
+  m_LocalPosition: {x: 0.52300006, y: 1.083, z: 4.673765}
+  m_LocalScale: {x: 1.1090331, y: 0.3273478, z: 1}
   m_Children: []
   m_Father: {fileID: 1312485402}
   m_RootOrder: 0
@@ -1103,7 +1153,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fe1e443c21ed1cd4f88dc5ff5ba8a2e4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.16620484, b: 0.06941971, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1125,7 +1175,7 @@ GameObject:
   - component: {fileID: 2055553948}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: toes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
