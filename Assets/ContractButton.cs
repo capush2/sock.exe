@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ContractButton : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject homeButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,14 @@ public class ContractButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        //Ajouter limage du contrat au game object ActiveContract
-        //GameObject.Find("ActiveContract").transform;
+        ContractGroupManager manager = transform.parent.parent.Find("Apps").Find("AppContracts").GetComponent<ContractGroupManager>();
+        if (!manager.acceptedContract)
+        {
+            manager.acceptedContract = true;
+            manager.targetedSock = transform.Find("Sock(Clone)").gameObject;
+            Debug.Log(manager.targetedSock.name);
+            homeButton.GetComponent<HomeButton>().ClickedOn();
+            gameManager.ToggleTablet();
+        }
     }
 }

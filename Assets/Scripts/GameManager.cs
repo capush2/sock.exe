@@ -47,20 +47,24 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (cursorLocked)
-            {
-                inSpecialScene = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                inSpecialScene = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            uIManager.ToggleTablet();
-            cursorLocked = !cursorLocked;
-            //UIManager.ToggleTablet();
+            ToggleTablet();
         }
+    }
+
+    public void ToggleTablet()
+    {
+        if (cursorLocked)
+        {
+            inSpecialScene = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            inSpecialScene = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        uIManager.ToggleTablet();
+        cursorLocked = !cursorLocked;
     }
 
     public void SendPlayerTip(string key)
