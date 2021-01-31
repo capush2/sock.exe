@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class VanGogh : MonoBehaviour
 {
-    [SerializeField] Color primaryColor = Color.blue;
-    [SerializeField] Color secondaryColor = Color.red;
-    [SerializeField] Color terceryColor = Color.green;
+    [SerializeField] PossibleColors primaryColor = PossibleColors.Blue;
+    [SerializeField] PossibleColors secondaryColor = PossibleColors.Red;
+    [SerializeField] PossibleColors terceryColor = PossibleColors.Green;
     Image[] socks;
     // Start is called before the first frame update
     void Start()
@@ -15,22 +15,26 @@ public class VanGogh : MonoBehaviour
         applyTheStyle(primaryColor, secondaryColor, terceryColor);
     }
 
-    public void applyTheStyle(Color prim, Color sec, Color terc)
+    public void applyTheStyle(PossibleColors prim, PossibleColors sec, PossibleColors terc)
     {
         socks = GetComponentsInChildren<Image>();
         for(int i = 0; i < socks.Length; i++)
         {
-            if(socks[i].tag == "toes")
+            Color32 color;
+            if (socks[i].tag == "toes")
             {
-                socks[i].color = prim;
+                color = SockColor.GetColorCode(prim);
+                socks[i].color = color;
             }
             if (socks[i].tag == "collar")
             {
-                socks[i].color = terc;
+                color = SockColor.GetColorCode(terc);
+                socks[i].color = color;
             }
             if (socks[i].tag == "fold")
             {
-                socks[i].color = sec;
+                color = SockColor.GetColorCode(sec);
+                socks[i].color = color;
             }
         }
         
