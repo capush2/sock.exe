@@ -7,6 +7,7 @@ public class HomeButton : MonoBehaviour
 {
 	public Button home;
 	private bool first = true;
+	public GameObject[] toDisableOnHome;
 
 	void Start()
 	{
@@ -15,7 +16,11 @@ public class HomeButton : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		transform.parent.GetComponent<TabletSpritesContainer>().ChangeSprite();
+		transform.parent.GetComponent<TabletSpritesContainer>().ChangeSprite(1);
+		foreach(var i in toDisableOnHome)
+        {
+			i.SetActive(false);
+        }
         if (first)
         {
 			first = false;

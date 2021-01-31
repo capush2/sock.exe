@@ -47,10 +47,6 @@ public class CameraTest : LivingThing
     {
         if (manager.CanPlayerMoveFree)
         {
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                OnMineHit();
-            }
             Equip();
             PickupWeaponTool();
             UseEquippedWTool();

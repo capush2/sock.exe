@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &530158412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -627,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449937266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -702,6 +702,11 @@ MonoBehaviour:
   tabletStates:
   - {fileID: 21300000, guid: 9afd156f30028a74d961a994a2cc4bd9, type: 3}
   - {fileID: 21300000, guid: 18d865ee6ca11e948b4a03d67f63a416, type: 3}
+  AppGroup:
+  - {fileID: 804036619}
+  - {fileID: 1040336401}
+  - {fileID: 752616725}
+  - {fileID: 1704067556}
 --- !u!1 &1704067556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1609,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Round 1
+  m_Text: SOCK HUNTER
 --- !u!114 &8795844340677626528
 MonoBehaviour:
   m_ObjectHideFlags: 0
