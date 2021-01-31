@@ -11766,6 +11766,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6835532765773964134, guid: f71437398a81d6e44847a04a114db5c2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 133.47998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835532765773964134, guid: f71437398a81d6e44847a04a114db5c2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 67.48291
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835532765773964134, guid: f71437398a81d6e44847a04a114db5c2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835532765773964134, guid: f71437398a81d6e44847a04a114db5c2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.7538
+      objectReference: {fileID: 0}
     - target: {fileID: 7959852314908411990, guid: f71437398a81d6e44847a04a114db5c2,
         type: 3}
       propertyPath: gm
