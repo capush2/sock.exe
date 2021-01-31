@@ -49,6 +49,10 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
+            if (hasEquipped) {
+                inventoryDisplay[numEquipped].GetComponent<IWeaponTool>().UnEquip();
+                Debug.Log($"Has UNEquipped {numEquipped}");
+            }
             inventoryDisplay[num].GetComponent<IWeaponTool>().Equip();
             equipped = inventoryDisplay[num];
             numEquipped = num;
