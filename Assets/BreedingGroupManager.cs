@@ -17,6 +17,8 @@ public class BreedingGroupManager : MonoBehaviour
 
     void TaskOnClick()
     {
-
+        tablet.ChangeSprite(0);
+        contractGroup.SetActive(true);
+        gameObject.SetActive(false);//important doit etre en dernier
     }
 }
