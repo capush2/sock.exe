@@ -67,7 +67,6 @@ public class NavAgentAI : LivingThing
         float relSpeed = Vector3.Distance(transform.position, lastPos) * Time.deltaTime;
         anim.SetFloat("velocity", relSpeed);
         Vector3 dir = (lastPos - transform.position).normalized;
-        Debug.Log(relSpeed);
 
         //Rotation
         transform.LookAt(Vector3.Slerp(transform.position + transform.forward,lastPos,animTurnSpeed), Vector3.up);

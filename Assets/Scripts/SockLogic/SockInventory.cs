@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SockInventory : MonoBehaviour
 {
-    private MoneyManager money;
+    //private MoneyManager money;
     private List<Breeder> breeders;
     private List<Sock> socks;
 

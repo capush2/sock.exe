@@ -6,11 +6,12 @@ public enum Pattern
     Hearts,
     SnowFlake
 }
-public  enum Color
-{
-    Blue,
-    Red,
-    Green,
-    Pink,
-    Gold,
-}
+
+//public enum Color
+//{
+//    Blue,
+//    Red,
+//    Green,
+//    Pink,
+//    Gold,
+//}

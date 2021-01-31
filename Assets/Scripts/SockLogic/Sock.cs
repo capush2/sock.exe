@@ -21,47 +21,47 @@ public class Sock
 
     public Sock(Sock father, Sock mother)
     {
-        isMale = (Random.value > 0.5f);
-        lifespanLeft = Random.Range(MIN_LIFESPAN, MAX_LIFESPAN);
-        fertility = Random.Range(father.fertility, mother.fertility);
-        if (father.hasArmor && mother.hasArmor)
-            hasArmor = true;
-        else if (father.hasArmor || mother.hasArmor)
-            hasArmor = (Random.value > 0.5f);
-        else
-            hasArmor = false;
+        //isMale = (Random.value > 0.5f);
+        //lifespanLeft = Random.Range(MIN_LIFESPAN, MAX_LIFESPAN);
+        //fertility = Random.Range(father.fertility, mother.fertility);
+        //if (father.hasArmor && mother.hasArmor)
+        //    hasArmor = true;
+        //else if (father.hasArmor || mother.hasArmor)
+        //    hasArmor = (Random.value > 0.5f);
+        //else
+        //    hasArmor = false;
 
-        if (Random.value > 0.75)
-        {
-            pattern = father.pattern;
-        }
-        else
-        {
-            pattern = mother.pattern;
-        }
+        //if (Random.value > 0.75)
+        //{
+        //    pattern = father.pattern;
+        //}
+        //else
+        //{
+        //    pattern = mother.pattern;
+        //}
 
-        if (Random.value > 0.75)
-        {
-            primaryColor = mother.primaryColor;
-        }
-        else
-        {
-            primaryColor = father.primaryColor;
-        }
+        //if (Random.value > 0.75)
+        //{
+        //    primaryColor = mother.primaryColor;
+        //}
+        //else
+        //{
+        //    primaryColor = father.primaryColor;
+        //}
 
-        if (Random.value > 0.5)
-        {
-            secondaryColor = mother.secondaryColor;
-        }
-        else
-        {
-            secondaryColor = father.secondaryColor;
-        }
+        //if (Random.value > 0.5)
+        //{
+        //    secondaryColor = mother.secondaryColor;
+        //}
+        //else
+        //{
+        //    secondaryColor = father.secondaryColor;
+        //}
 
-        modifiers = new Modifiers(pattern, primaryColor, hasArmor);
+        //modifiers = new Modifiers(pattern, primaryColor, hasArmor);
     }
 
-    public tickDown()
+    public void tickDown()
     {
         lifespanLeft--;
         if (lifespanLeft == 0)

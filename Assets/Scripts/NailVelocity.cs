@@ -8,7 +8,6 @@ public class NailVelocity : MonoBehaviour
     float impulseForce = 150;
     void Start()
     {
-        
         GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward)*impulseForce*Time.deltaTime, ForceMode.Impulse);
     }
 
