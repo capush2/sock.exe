@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BreedingGroup : MonoBehaviour
 {
+    [SerializeField] private GameObject male, female;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +36,7 @@ public class BreedingGroup : MonoBehaviour
     }
     public void Effacer()
     {
-        GameObject daddy = transform.Find("InventaireSlots").gameObject;
-        foreach(var i in daddy.transform)
-        {
-            Destroy(transform.gameObject);
-        }
+        Destroy(male.GetComponentInChildren<VanGogh>().gameObject);
+        Destroy(female.GetComponentInChildren<VanGogh>().gameObject);
     }
 }

@@ -8,8 +8,13 @@ public class UseSockAsParent : MonoBehaviour
     private GameObject female, male;
     private Button theButton;
     public static int Count = 0;
+    private Transform parentT;
+    private Vector3 initLocalPos;
+    private bool selected = false;
     void Start()
     {
+        parentT = transform.parent;
+        initLocalPos = transform.parent.position;
         theButton = GetComponent<Button>();
         theButton.onClick.AddListener(UseAParent);
         female = GameObject.Find("Femelle");
@@ -18,18 +23,26 @@ public class UseSockAsParent : MonoBehaviour
 
     void UseAParent()
     {
-        GameObject copy = transform.parent.gameObject;
-        if (Count % 2 == 0)
+        if (!selected)
         {
-            copy.transform.SetParent(female.transform);
-        }
-        else
+            selected = true;
+            GameObject copy = transform.parent.gameObject;
+            if (Count % 2 == 0)
+            {
+                copy.transform.SetParent(female.transform);
+            }
+            else
+            {
+                copy.transform.SetParent(male.transform);
+            }
+            copy.transform.localPosition = new Vector3(0, 0, 0);
+            Count++;
+        } else
         {
-            copy.transform.SetParent(male.transform);
+            Debug.Log("reclicked");
+            selected = false;
+            transform.parent.SetParent(parentT);
+            transform.parent.position = initLocalPos;
         }
-        
-        copy.transform.localPosition = new Vector3(0, 0, 0);
-        Count++;
-        copy.GetComponentInChildren<Button>().enabled = false;
     }
 }
