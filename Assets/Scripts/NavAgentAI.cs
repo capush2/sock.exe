@@ -24,6 +24,7 @@ public class NavAgentAI : LivingThing
     Animator anim;
     Rigidbody rb;
     [SerializeField] private float animTurnSpeed = 0.01f;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,10 @@ public class NavAgentAI : LivingThing
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
         CheckState();
 
         if(IsDestinationReach())
@@ -150,20 +155,24 @@ public class NavAgentAI : LivingThing
 
     override public void OnBearTrapHit()
     {
-        base.OnBearTrapHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
     }
 
     public override void OnMineHit()
     {
-        base.OnMineHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
     }
 
     public override void OnNailHit()
     {
-        base.OnNailHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
+    }
+
+    public void SewerSlide()
+    {
+        agent.SetDestination(transform.position);
+        isDead = true;
+        anim.SetBool("isDead",true);
     }
 
     #endregion
