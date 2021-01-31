@@ -7,7 +7,11 @@ public class NailGun : WeaponTool
 {
     [SerializeField]
     GameObject nailPrefab = null;
-
+    AudioSource source;
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public override bool Use(RaycastHit hit)
     {
         if (equipped)
@@ -22,6 +26,7 @@ public class NailGun : WeaponTool
             {
                 current.transform.rotation = gameObject.transform.rotation;
             }
+            AudioSource.PlayClipAtPoint(source.clip, source.transform.position);
             gameObject.SetActive(false);
             return true;
         }

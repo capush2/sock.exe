@@ -16,7 +16,6 @@ public class CameraTest : LivingThing
     [SerializeField] private GameManager manager;
     private Transform lastLooked = null;
 
-
     private Rigidbody rb;
     private Camera cam;
 

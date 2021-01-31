@@ -7,6 +7,7 @@ public class Tide : WeaponTool
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private float throwForce = 20f;
     private float expRadius = 10f;
+    AudioSource source;
 
     private Collider col;
     [SerializeField] private float expDelay = 3;
@@ -14,6 +15,7 @@ public class Tide : WeaponTool
     public void Start()
     {
         col = GetComponent<Collider>();
+        source = GetComponent<AudioSource>();
     }
     public override bool Use(RaycastHit hit)
     {
@@ -37,7 +39,7 @@ public class Tide : WeaponTool
     {
         yield return new WaitForSeconds(expDelay);
         ParticleSystem exp = Instantiate(explosion, transform.position, Quaternion.identity);
-
+        AudioSource.PlayClipAtPoint(source.clip, source.transform.position);
         exp.Play();
         for(int i = 0; i < 10; i++)
         {
@@ -48,7 +50,6 @@ public class Tide : WeaponTool
             }
             yield return new WaitForSeconds(0.2f);
         }
-        
         Destroy(this.gameObject);
         Destroy(exp, 10);
         yield return null;

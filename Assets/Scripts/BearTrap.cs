@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class BearTrap : WeaponTool
 {
+    AudioSource source;
     private bool opened = false;
 
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public override bool Use(RaycastHit hit)
     {
         if (hit.collider.gameObject.tag == "Floor")
@@ -27,6 +32,7 @@ public class BearTrap : WeaponTool
     {
         if (opened && other.gameObject.layer == LayerMask.NameToLayer("Living"))
         {
+            AudioSource.PlayClipAtPoint(source.clip, source.transform.position);
             transform.GetChild(3).eulerAngles += new Vector3(85, 0, 0);
             transform.GetChild(4).eulerAngles += new Vector3(85, 0, 0);
             opened = false;

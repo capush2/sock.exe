@@ -6,10 +6,16 @@ using UnityEngine;
 public class DoorMine : WeaponTool
 {
     [SerializeField] private ParticleSystem explosion;
+    AudioSource source;
     private float triggerAngle = 30f;
     private float expRadius = 10f;
 
     private Quaternion trigger = Quaternion.identity;
+
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public override bool Use(RaycastHit hit)
     {
         
@@ -54,8 +60,8 @@ public class DoorMine : WeaponTool
                 col.GetComponent<LivingThing>().OnMineHit();
             }
 
+            AudioSource.PlayClipAtPoint(source.clip, source.transform.position);
             exp.Play();
-            Debug.Log("Boom");
             Destroy(gameObject);
             Destroy(exp, 10);
         }
