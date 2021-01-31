@@ -6,16 +6,16 @@ public class NailVelocity : MonoBehaviour
 {
     [SerializeField]
     float impulseForce = 150;
-    void Awake()
+    void Start()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward*impulseForce*Time.deltaTime, ForceMode.Impulse);
+        
+        GetComponent<Rigidbody>().AddForce(transform.TransformDirection(Vector3.forward)*impulseForce*Time.deltaTime, ForceMode.Impulse);
     }
 
     void FixedUpdate()
     {
         var v = transform.position + GetComponent<Rigidbody>().velocity;
         transform.LookAt(v);
-        Debug.Log(v);
     }
 
     void OnDrawGizmos()

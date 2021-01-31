@@ -48,7 +48,6 @@ public class NavAgentAI : LivingThing
             {
                 currentPoint++;
                 currentPoint %= goals.Length;
-                print("Current index " + currentPoint);
                 agent.SetDestination(goals[currentPoint].position);
                 agent.speed = speed;
                 isRunningAway = false;

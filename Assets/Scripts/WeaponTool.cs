@@ -16,6 +16,7 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
     {
         childrenOutlines = GetComponentsInChildren<Outline>();
     }
+
     public virtual void Equip()
     {
         GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
