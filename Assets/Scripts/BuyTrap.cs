@@ -7,6 +7,7 @@ public class BuyTrap : MonoBehaviour
 {
     [SerializeField] GameObject trap;
     [SerializeField] GameManager gm;
+    GameObject activeTrap;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,9 @@ public class BuyTrap : MonoBehaviour
         if (GameManager.money >= 75)
         {
             GameManager.money -= 75;
-            trap = Instantiate(trap);
-            trap.transform.Translate(12f, 1.25f, 94f);
+            activeTrap = Instantiate(trap);
+            activeTrap.transform.Translate(12f, 1.25f, 94f);
+            trap.SetActive(true);
             gm.SendPlayerMessage("Trap bought!");
         }
         else

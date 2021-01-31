@@ -7,6 +7,7 @@ public class BuyMine : MonoBehaviour
 {
     [SerializeField] GameObject mine;
     [SerializeField] GameManager gm;
+    GameObject activeMine;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,8 @@ public class BuyMine : MonoBehaviour
         if (GameManager.money >= 100)
         {
             GameManager.money -= 100;
-            mine = Instantiate(mine);
-            mine.transform.Translate(20f, 2.5f, 76f);
+            activeMine = Instantiate(mine);
+            activeMine.transform.Translate(20f, 2.5f, 76f);
             gm.SendPlayerMessage("Mine bought!");
         }
         else

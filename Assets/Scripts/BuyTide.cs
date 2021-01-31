@@ -7,6 +7,7 @@ public class BuyTide : MonoBehaviour
 {
     [SerializeField] GameObject tide;
     [SerializeField] GameManager gm;
+    GameObject activeTide;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +25,8 @@ public class BuyTide : MonoBehaviour
         if (GameManager.money >= 50)
         {
             GameManager.money -= 50;
-            tide = Instantiate(tide);
-            tide.transform.Translate(14f, 1.5f, 94f);
+            activeTide = Instantiate(tide);
+            activeTide.transform.Translate(14f, 1.5f, 94f);
             gm.SendPlayerMessage("Tide bought!");
 
         }
