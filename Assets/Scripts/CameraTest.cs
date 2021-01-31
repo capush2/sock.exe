@@ -213,9 +213,7 @@ public class CameraTest : LivingThing
         float prevJmpForce = jumpForce;
         speed = 0;
         jumpForce = 0;
-        print("Why you slut");
         yield return new WaitForSecondsRealtime(5);
-        print("Why you whore");
         speed = prevSpeed;
         jumpForce = prevJmpForce;
     }
@@ -224,9 +222,7 @@ public class CameraTest : LivingThing
 
     override public void OnBearTrapHit()
     {
-        print("Why you ape");
         StartCoroutine(BearDelay());
-        print("Why you fiend");
     }
 
     public override void OnMineHit()
