@@ -31,8 +31,7 @@ public class NavAgentAI : LivingThing
     Animator anim;
     Rigidbody rb;
     [SerializeField] private float animTurnSpeed = 0.01f;
-    private bool isDead = false;
-
+    public bool IsDead { get; private set; } = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,13 +44,13 @@ public class NavAgentAI : LivingThing
     // Update is called once per frame
     void Update()
     {
-        if (isDead )
+        if (IsDead)
         {
             return;
         }
         CheckState();
 
-        if(IsDestinationReach())
+        if (IsDestinationReach())
         {
             if (intStyle == AI_Intelligence.smart)
             {
@@ -74,8 +73,8 @@ public class NavAgentAI : LivingThing
             }
 
         }
-        
-        if((player.position.x > agent.transform.position.x - detectionradius &&  player.position.x < agent.transform.position.x + detectionradius) && (player.position.y > agent.transform.position.y - detectionradius && player.position.y < agent.transform.position.y + detectionradius) && (player.position.z > agent.transform.position.z - detectionradius && player.position.z < agent.transform.position.z + detectionradius)) 
+
+        if ((player.position.x > agent.transform.position.x - detectionradius && player.position.x < agent.transform.position.x + detectionradius) && (player.position.y > agent.transform.position.y - detectionradius && player.position.y < agent.transform.position.y + detectionradius) && (player.position.z > agent.transform.position.z - detectionradius && player.position.z < agent.transform.position.z + detectionradius))
         {
             RunAway();
         }
@@ -89,7 +88,7 @@ public class NavAgentAI : LivingThing
         Vector3 dir = (lastPos - transform.position).normalized;
 
         //Rotation
-        transform.LookAt(Vector3.Slerp(transform.position + transform.forward,lastPos,animTurnSpeed), Vector3.up);
+        transform.LookAt(Vector3.Slerp(transform.position + transform.forward, lastPos, animTurnSpeed), Vector3.up);
 
         lastPos = transform.position;
     }
@@ -98,23 +97,24 @@ public class NavAgentAI : LivingThing
     {
         float distanceToTarget = Vector3.Distance(agent.transform.position, agent.destination);
         return distanceToTarget < destinationReachedTreshold;
-        
+
     }
     public void GenGoals(ref NavMeshAgent agent, AI_Intelligence AIiS)
     {
         intStyle = AIiS;
-        if (intStyle == AI_Intelligence.smart) {
+        if (intStyle == AI_Intelligence.smart)
+        {
             agent.SetDestination(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
         }
-        else if(intStyle == AI_Intelligence.stupid)
+        else if (intStyle == AI_Intelligence.stupid)
         {
             int nbPoint = UnityEngine.Random.Range(2, 10);
             goals = new Transform[nbPoint];
             for (int i = 0; i < nbPoint; i++)
             {
-                goals[i] =  new GameObject("goal").transform;
+                goals[i] = new GameObject("goal").transform;
                 goals[i].Translate(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
-               
+
             }
             currentPoint = 0;
             agent.SetDestination(goals[currentPoint].position);
@@ -131,7 +131,7 @@ public class NavAgentAI : LivingThing
 
     void RunAway()
     {
-        if(!isRunningAway)
+        if (!isRunningAway)
         {
             Run();
             Vector3 awayDest = new Vector3();
@@ -163,7 +163,7 @@ public class NavAgentAI : LivingThing
             agent.SetDestination(awayDest);
             isRunningAway = true;
         }
-         
+
     }
 
     #region LivingThing
@@ -182,12 +182,21 @@ public class NavAgentAI : LivingThing
     {
         SewerSlide();
     }
+    public override void OnTideHit()
+    {
+        SewerSlide();
+    }
+
 
     public void SewerSlide()
     {
+        if (IsDead)
+            return;
+
+        GetComponent<CapsuleCollider>().isTrigger = true;
         agent.SetDestination(transform.position);
-        isDead = true;
-        anim.SetBool("isDead",true);
+        IsDead = true;
+        anim.SetBool("isDead", true);
     }
 
     #endregion

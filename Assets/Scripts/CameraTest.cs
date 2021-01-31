@@ -23,6 +23,9 @@ public class CameraTest : LivingThing
 
     private bool grounded = false;
     private float runMult = 1;
+
+    public List<GameObject> SockInventory { get; private set; } = new List<GameObject>();
+
     #region LivingThingVar
     [SerializeField] private Vector3 home = Vector3.zero;
     [SerializeField] private Vector3 p1 = Vector3.zero;
@@ -30,6 +33,7 @@ public class CameraTest : LivingThing
     private Vector3 deathPos = Vector3.zero;
     float counter = 0;
     [SerializeField ]float flySpeed = 1f;
+
     #endregion
 
     //TODO high jump on crouch?
@@ -51,7 +55,49 @@ public class CameraTest : LivingThing
             PickupWeaponTool();
             UseEquippedWTool();
             HighlightView();
+            TipSock();
         }
+    }
+
+    private void TipSock()
+    {
+        Collider[] cols = Physics.OverlapSphere(transform.position, 3, 1 << 10);
+        GameObject deadSock = null;
+        foreach(Collider col in cols)
+        {
+            if(col.transform.tag != "Player" && col.GetComponent<NavAgentAI>().IsDead)
+            {
+                deadSock = col.gameObject;
+            }
+        }
+        if(deadSock != null)
+        {
+            manager.SendPlayerTip("F");
+            StartCoroutine("ClearTip");
+        }
+
+        if (deadSock == null)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SockInventory.Add(deadSock);
+            deadSock.SetActive(false);
+            StartCoroutine("ShowPickSock");
+        }
+    }
+
+    IEnumerator ClearTip()
+    {
+        yield return new WaitForSeconds(2);
+        manager.SendPlayerTip("");
+    }
+
+    IEnumerator ShowPickSock()
+    {
+        manager.SendPlayerMessage("Sock added to inventory");
+        yield return new WaitForSeconds(2);
+        manager.SendPlayerMessage("");
     }
 
     void FixedUpdate()
@@ -230,7 +276,13 @@ public class CameraTest : LivingThing
         rb.isKinematic = true;
         StartCoroutine("GoHome");
     }
-    
+
+    public override void OnTideHit()
+    {
+        base.OnTideHit();
+        throw new System.NotImplementedException();
+    }
+
     IEnumerator GoHome()
     {
         for(; ; )

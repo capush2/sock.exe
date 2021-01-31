@@ -12,7 +12,7 @@ public class NailGun : WeaponTool
     {
         if (equipped)
         {
-            Ray ray = gameObject.transform.parent.transform.parent.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            Ray ray = transform.parent.GetComponentInParent<Camera>().ScreenPointToRay(Input.mousePosition);
             GameObject current = Instantiate(nailPrefab);
             current.transform.position = gameObject.transform.position;
             if (Physics.Raycast(ray, out hit))

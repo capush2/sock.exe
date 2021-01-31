@@ -9,7 +9,6 @@ public class DoorMine : WeaponTool
     private float triggerAngle = 30f;
     private float expRadius = 10f;
 
-    private bool isPlaced = false;
     private Quaternion trigger = Quaternion.identity;
     public override bool Use(RaycastHit hit)
     {
@@ -33,7 +32,6 @@ public class DoorMine : WeaponTool
             //Fin du bloc de no edit
 
             trigger = transform.rotation;
-            isPlaced = true;
             Used = true;            
 
 
@@ -44,7 +42,7 @@ public class DoorMine : WeaponTool
 
     private void FixedUpdate()
     {
-        if(isPlaced && Quaternion.Angle(trigger,transform.rotation) > triggerAngle)
+        if(Used && Quaternion.Angle(trigger,transform.rotation) > triggerAngle)
         {
             ParticleSystem exp = Instantiate(explosion,transform.position,Quaternion.identity);
 

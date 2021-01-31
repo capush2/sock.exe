@@ -10881,6 +10881,36 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 87.221275
       objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6958376
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99978006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.020971203
+      objectReference: {fileID: 0}
+    - target: {fileID: 2717404121756593133, guid: d18575db84348924490b1cafa3686243,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -2.403
+      objectReference: {fileID: 0}
     - target: {fileID: 2717404121756593134, guid: d18575db84348924490b1cafa3686243,
         type: 3}
       propertyPath: m_ConnectedAnchor.x

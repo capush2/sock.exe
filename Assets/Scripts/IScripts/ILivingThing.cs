@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,4 +18,8 @@ abstract public class LivingThing:MonoBehaviour
         Debug.Log(gameObject.ToString() + "Was hit by nail and has no behavior");
     }
 
+    virtual public void OnTideHit()
+    {
+        Debug.Log(gameObject.ToString() + "Was hit by tide and has no behavior");
+    }
 }
