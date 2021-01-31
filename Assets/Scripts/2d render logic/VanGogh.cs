@@ -12,7 +12,7 @@ public class VanGogh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        applyTheStyle(primaryColor, secondaryColor, terceryColor);
+        //applyTheStyle(primaryColor, secondaryColor, terceryColor);
     }
 
     public void applyTheStyle(PossibleColors prim, PossibleColors sec, PossibleColors terc)
