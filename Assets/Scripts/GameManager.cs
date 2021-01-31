@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool inSpecialScene = false;
+    public static int money = 200;
     // Start is called before the first frame update
     [SerializeField] private UIManager uIManager;
     private bool cursorLocked;

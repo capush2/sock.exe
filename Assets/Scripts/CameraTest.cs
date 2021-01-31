@@ -45,6 +45,11 @@ public class CameraTest : LivingThing
     {
         rb = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+        TestMBAs();
+    }
+
+    private void TestMBAs()
+    {
         GameObject current = Instantiate(prefabPicture);
         current.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Black, PossibleColors.Black, PossibleColors.Black);
         SockInventory.Add(current);
@@ -53,6 +58,10 @@ public class CameraTest : LivingThing
         current2.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Red, PossibleColors.Yellow, PossibleColors.Black);
         SockInventory.Add(current2);
         current2.SetActive(false);
+        GameObject current3 = Instantiate(prefabPicture);
+        current3.GetComponent<VanGogh>().ApplyTheStyle(PossibleColors.Pink, PossibleColors.Green, PossibleColors.Gray);
+        SockInventory.Add(current3);
+        current3.SetActive(false);
     }
 
     // Update is called once per frame
