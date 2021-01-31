@@ -8,6 +8,7 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
     [SerializeField]
     protected Sprite Texture2D;
     protected bool equipped;
+    public bool Used { get; protected set; }
 
     protected Outline[] childrenOutlines;
 
@@ -17,6 +18,9 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
     }
     public virtual void Equip()
     {
+        GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
+        gameObject.transform.position = rightHand.transform.position;
+        gameObject.transform.parent = rightHand.transform;
         gameObject.SetActive(true);
         equipped = true;
     }
@@ -36,9 +40,16 @@ abstract public class WeaponTool : MonoBehaviour, IWeaponTool
 
     public virtual void ToggleFlash()
     {
+        
         foreach (var o in childrenOutlines)
         {
-            o.enabled = !o.enabled;
+            if (Used)
+            {
+                o.enabled = false;
+            } else
+            {
+                o.enabled = !o.enabled;
+            }
         }
     }
 

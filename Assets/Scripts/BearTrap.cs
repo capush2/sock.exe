@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class BearTrap : WeaponTool
 {
-    private bool opened = true;
+    private bool opened = false;
 
     public override bool Use(RaycastHit hit)
     {
         if (hit.collider.gameObject.tag == "Floor")
         {
             transform.position = hit.point;
+            GameObject container = new GameObject();
+            container.transform.parent = hit.collider.transform;
+            transform.parent = container.transform;
+            transform.eulerAngles = hit.normal.normalized * 90;
+
+            opened = true;
+            Used = true;
             return true;
         }
         return false;

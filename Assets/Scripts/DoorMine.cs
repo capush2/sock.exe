@@ -34,7 +34,7 @@ public class DoorMine : WeaponTool
 
             trigger = transform.rotation;
             isPlaced = true;
-            
+            Used = true;            
 
 
             return true;
@@ -61,12 +61,5 @@ public class DoorMine : WeaponTool
             Destroy(gameObject);
             Destroy(exp, 10);
         }
-    }
-    public override void Equip()
-    {
-        GameObject rightHand = GameObject.FindGameObjectWithTag("RightHandPos");
-        gameObject.transform.position = rightHand.transform.position;
-        gameObject.transform.parent = rightHand.transform;
-        base.Equip();
     }
 }

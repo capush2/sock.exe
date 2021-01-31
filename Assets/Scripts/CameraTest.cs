@@ -171,7 +171,7 @@ public class CameraTest : LivingThing
 
     private void PickupWeaponTool()
     {
-        if (lastLooked != null && Input.GetKeyDown(KeyCode.F))
+        if (lastLooked != null && Input.GetKeyDown(KeyCode.F) && !lastLooked.GetComponent<WeaponTool>().Used)
         {
             lastLooked.gameObject.SetActive(false);
             inventory.AddToInventory(lastLooked.gameObject);
