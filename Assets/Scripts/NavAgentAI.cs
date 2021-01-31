@@ -23,7 +23,7 @@ public class NavAgentAI : LivingThing
     float destinationReachedTreshold = 1.01f;
     private int currentPoint;
     NavMeshAgent agent;
-    private Transform player;
+    [SerializeField] private Transform player;
     bool isRunningAway = false;
     Vector3 lastPos = Vector3.zero;
     [SerializeField] AI_Intelligence intStyle = AI_Intelligence.stupid;
@@ -118,10 +118,10 @@ public class NavAgentAI : LivingThing
             }
             currentPoint = 0;
             agent.SetDestination(goals[currentPoint].position);
-            agent.speed = speed;
-            agent.radius = radius;
-            player = GameObject.FindWithTag("Player").transform;
         }
+        agent.speed = speed;
+        agent.radius = radius;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     void Run()
