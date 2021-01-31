@@ -26,6 +26,13 @@ public class NailVelocity : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag != "Player")
+        {
             GetComponent<Rigidbody>().isKinematic = true;
+            transform.parent = collision.transform;
+        }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Living"))
+        {
+            collision.gameObject.GetComponent<LivingThing>().OnNailHit();
+        }
     }
 }

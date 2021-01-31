@@ -6,6 +6,13 @@ using UnityEngine.AI;
 
 public class NavAgentAI : LivingThing
 {
+    public enum AI_Intelligence
+    {
+        stupid,
+        smart,
+        dasher
+    };
+
     const float BASE_HEIGHT = 4f, MIN_X = -30f, MAX_X = 30f, MAX_Y = 10f, MIN_Z = -30f, MAX_Z = 30f;
     [SerializeField]
     public Transform[] goals;
@@ -19,17 +26,18 @@ public class NavAgentAI : LivingThing
     private Transform player;
     bool isRunningAway = false;
     Vector3 lastPos = Vector3.zero;
-    [SerializeField] bool isHardToCatch = false;
+    [SerializeField] AI_Intelligence intStyle = AI_Intelligence.stupid;
 
     Animator anim;
     Rigidbody rb;
     [SerializeField] private float animTurnSpeed = 0.01f;
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        GenGoals(ref agent, isHardToCatch);
+        GenGoals(ref agent, (AI_Intelligence)UnityEngine.Random.Range(0, 3));
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -37,14 +45,21 @@ public class NavAgentAI : LivingThing
     // Update is called once per frame
     void Update()
     {
+        if (isDead )
+        {
+            return;
+        }
         CheckState();
 
         if(IsDestinationReach())
         {
-            if (isHardToCatch)
+            if (intStyle == AI_Intelligence.smart)
             {
                 agent.SetDestination(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
-            } else
+                agent.speed = speed;
+                isRunningAway = false;
+            }
+            if (intStyle == AI_Intelligence.stupid)
             {
                 currentPoint++;
                 currentPoint %= goals.Length;
@@ -52,7 +67,12 @@ public class NavAgentAI : LivingThing
                 agent.speed = speed;
                 isRunningAway = false;
             }
-            
+            if (intStyle == AI_Intelligence.dasher && isRunningAway)
+            {
+                agent.speed = speed;
+                isRunningAway = false;
+            }
+
         }
         
         if((player.position.x > agent.transform.position.x - detectionradius &&  player.position.x < agent.transform.position.x + detectionradius) && (player.position.y > agent.transform.position.y - detectionradius && player.position.y < agent.transform.position.y + detectionradius) && (player.position.z > agent.transform.position.z - detectionradius && player.position.z < agent.transform.position.z + detectionradius)) 
@@ -80,13 +100,13 @@ public class NavAgentAI : LivingThing
         return distanceToTarget < destinationReachedTreshold;
         
     }
-    public void GenGoals(ref NavMeshAgent agent, bool isHard)
+    public void GenGoals(ref NavMeshAgent agent, AI_Intelligence AIiS)
     {
-        isHardToCatch = isHard;
-        if (isHardToCatch) {
+        intStyle = AIiS;
+        if (intStyle == AI_Intelligence.smart) {
             agent.SetDestination(new Vector3(UnityEngine.Random.Range(MIN_X, MAX_X), MAX_Y - ((MAX_Y - 1) * UnityEngine.Random.Range(0, 1)), UnityEngine.Random.Range(MIN_Z, MAX_Z)));
         }
-        else 
+        else if(intStyle == AI_Intelligence.stupid)
         {
             int nbPoint = UnityEngine.Random.Range(2, 10);
             goals = new Transform[nbPoint];
@@ -150,20 +170,24 @@ public class NavAgentAI : LivingThing
 
     override public void OnBearTrapHit()
     {
-        base.OnBearTrapHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
     }
 
     public override void OnMineHit()
     {
-        base.OnMineHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
     }
 
     public override void OnNailHit()
     {
-        base.OnNailHit();
-        throw new System.NotImplementedException();
+        SewerSlide();
+    }
+
+    public void SewerSlide()
+    {
+        agent.SetDestination(transform.position);
+        isDead = true;
+        anim.SetBool("isDead",true);
     }
 
     #endregion
