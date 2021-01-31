@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
       propertyPath: flySpeed
-      value: 3000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 878984205788746714, guid: a67d3ada91803fa448c673cfe46488fa,
         type: 3}
