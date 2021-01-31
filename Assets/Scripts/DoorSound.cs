@@ -18,7 +18,6 @@ public class DoorSound : MonoBehaviour
         isInCollision = (GetComponent<Rigidbody>().velocity != Vector3.zero);
         if (wasCollided && !isInCollision)
         {
-            print("Im playing");
             AudioSource.PlayClipAtPoint(source.clip, source.transform.position);
         }
         wasCollided = isInCollision;

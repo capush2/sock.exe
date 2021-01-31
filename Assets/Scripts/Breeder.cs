@@ -17,8 +17,12 @@ public class Breeder : MonoBehaviour
 
     public void Breed()
     {
-        PossibleColors[] mColors = male.GetComponentInChildren<VanGogh>().GetArray();
-        PossibleColors[] fColors = female.GetComponentInChildren<VanGogh>().GetArray();
+        PossibleColors[] mColors = male.GetComponentInChildren<VanGogh>()?.GetArray();
+        PossibleColors[] fColors = female.GetComponentInChildren<VanGogh>()?.GetArray();
+        if(mColors == null || fColors == null)
+        {
+            return;
+        }
         PossibleColors[] child = new PossibleColors[3];
         switch (Random.Range(0,3))//primary
         {
@@ -62,8 +66,8 @@ public class Breeder : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Remove(female.GetComponentInChildren<VanGogh>().gameObject);
         GameObject current = Instantiate(prefabPicture);
         current.GetComponent<VanGogh>().ApplyTheStyle(child[0],child[1],child[2]);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Add(current);
         bgroup.Effacer();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<CameraTest>().SockInventory.Add(current);
         bgroup.Afficher();
 
     }
