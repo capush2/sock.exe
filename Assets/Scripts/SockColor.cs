@@ -14,7 +14,8 @@ public enum PossibleColors
     White,
     Black,
     Gray,
-    Pink
+    Pink,
+    Size
 }
 
 public class SockColor : MonoBehaviour

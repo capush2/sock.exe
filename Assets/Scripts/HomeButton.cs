@@ -16,15 +16,20 @@ public class HomeButton : MonoBehaviour
 
 	void TaskOnClick()
 	{
+		ClickedOn();
+	}
+
+	public void ClickedOn()
+    {
 		transform.parent.GetComponent<TabletSpritesContainer>().ChangeSprite(1);
-		foreach(var i in toDisableOnHome)
-        {
+		foreach (var i in toDisableOnHome)
+		{
 			i.SetActive(false);
-        }
-        if (first)
-        {
+		}
+		if (first)
+		{
 			first = false;
 			GameObject.Find("WelcomeMessage").SetActive(false);
-        }
+		}
 	}
 }
